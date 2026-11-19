@@ -1,0 +1,585 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>IELTS Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a narrow column for choosing work; during an attempt, the two-pane screen of the computer test (source left, answer right). */
+:root {
+  --bg: #eef1f5; --surface: #ffffff; --ink: #14202c; --muted: #586877; --line: #d3dae2;
+  --accent: #1d5fc4; --on-accent: #ffffff; --good: #17754a; --bad: #b3261e; --warn: #8a5a00;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --grid: #e3e7ec;
+  --display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f151b; --surface: #18212a; --ink: #e7edf3; --muted: #94a4b3; --line: #2c3945;
+  --accent: #86b4ff; --on-accent: #0c1622; --good: #62d093; --bad: #ff8f85; --warn: #f0c060;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --grid: #26323d; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f151b; --surface: #18212a; --ink: #e7edf3; --muted: #94a4b3; --line: #2c3945;
+  --accent: #86b4ff; --on-accent: #0c1622; --good: #62d093; --bad: #ff8f85; --warn: #f0c060;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --grid: #26323d; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font: 400 17px/1.55 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 24px 48px; }
+main { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+h1 { font: 700 30px/1.1 var(--display); margin: 0; text-wrap: balance; }
+h2 { font: 700 21px/1.2 var(--display); margin: 0; text-wrap: balance; }
+h3 { font: 700 16px/1.3 var(--display); margin: 0; }
+p { margin: 0; }
+a { color: var(--accent); }
+.muted { color: var(--muted); font-size: 15px; }
+.label { font: 600 12px/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.sheet { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.spread { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }
+
+nav { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line); }
+nav a { padding: 10px 14px; text-decoration: none; color: var(--muted); font-weight: 600; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+
+button { font: inherit; color: inherit; }
+button.go, button.alt { font: 600 16px/1 var(--body); padding: 13px 18px; border-radius: 6px; cursor: pointer; min-height: 46px; }
+button.go { background: var(--accent); color: var(--on-accent); border: 0; }
+button.alt { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+button.small { padding: 9px 12px; min-height: 40px; font-size: 15px; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.days { font: 500 15px/1.3 var(--body); color: var(--muted); }
+.days b { font: 500 26px/1 var(--mono); color: var(--ink); margin-right: 6px; font-variant-numeric: tabular-nums; }
+.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.door { text-align: left; text-decoration: none; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 6px; padding: 18px; display: flex; flex-direction: column; gap: 6px; }
+.door:hover { border-color: var(--accent); }
+.door b { font: 700 22px/1.2 var(--display); }
+.door small { color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+.item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 14px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+.item:first-of-type { border-top: 0; padding-top: 0; }
+.item .what { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.item .what b { font: 600 17px/1.3 var(--body); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 500 12.5px/1.2 var(--body); padding: 4px 8px; border-radius: 4px; background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+.tag.done { color: var(--good); border-color: var(--good); }
+.tag.hold { color: var(--warn); border-color: var(--warn); }
+@media (max-width: 520px) { .item { grid-template-columns: minmax(0, 1fr); } }
+
+/* the attempt screen */
+.exam { position: fixed; inset: 0; z-index: 5; background: var(--bg); display: flex; flex-direction: column; gap: 10px;
+  padding: max(10px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(10px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.bar { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; }
+.bar .which { display: flex; flex-direction: column; gap: 3px; margin-right: auto; min-width: 0; }
+.bar .which b { font: 700 17px/1.2 var(--display); overflow-wrap: anywhere; }
+.clock { font: 500 24px/1 var(--mono); font-variant-numeric: tabular-nums; min-width: 4.2ch; }
+.clock.low { color: var(--warn); } .clock.out { color: var(--bad); }
+.meter { font-size: 15px; color: var(--muted); } .meter b { color: var(--ink); font: 500 18px/1 var(--mono); font-variant-numeric: tabular-nums; }
+.confirm { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 8px; border-top: 1px solid var(--line); }
+.panes { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.pane { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px; overflow: auto; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.pane.write { padding: 0; }
+textarea#essay { flex: 1; width: 100%; box-sizing: border-box; border: 0; border-radius: 6px; resize: none; padding: 18px; background: var(--surface); color: var(--ink); font: 400 17px/1.7 var(--body); min-height: 240px; }
+textarea#essay:focus-visible { outline-offset: -3px; }
+@media (max-width: 860px) {
+  .panes { display: flex; flex-direction: column; overflow: auto; }
+  .pane { overflow: visible; flex: none; }
+  textarea#essay { min-height: 60vh; }
+}
+.task { font-size: 18px; line-height: 1.6; }
+.rubric { color: var(--muted); }
+.note { font-size: 15px; color: var(--muted); border-left: 3px solid var(--line); padding-left: 10px; }
+
+/* reading */
+.para { line-height: 1.7; max-width: 68ch; }
+.plabel { display: inline-block; font: 700 15px/1 var(--display); margin-right: 8px; color: var(--accent); }
+.qgroup { display: flex; flex-direction: column; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.qgroup:last-child { border-bottom: 0; }
+.instr { font-size: 15px; color: var(--muted); }
+.qn { display: inline-block; min-width: 1.6em; font: 500 15px/1 var(--mono); color: var(--accent); }
+.q { display: flex; flex-direction: column; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.q legend { padding: 0; margin-bottom: 8px; }
+.optlist { list-style: none; margin: 0; padding: 12px 14px; background: var(--bg); border-radius: 6px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; }
+.optlist b { font: 500 15px/1 var(--mono); display: inline-block; min-width: 2.2em; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { padding: 9px 12px; min-height: 42px; border-radius: 6px; border: 1.5px solid var(--muted); background: var(--bg); cursor: pointer; font: 600 14px/1 var(--body); }
+.seg button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
+.radio { display: flex; gap: 8px; align-items: baseline; padding: 8px 10px; border: 1.5px solid var(--line); border-radius: 6px; cursor: pointer; }
+.radio:has(input:checked) { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+select, input.gap { font: 500 16px/1.2 var(--body); padding: 9px 10px; border: 1.5px solid var(--muted); border-radius: 6px; background: var(--bg); color: var(--ink); }
+select { max-width: 100%; min-height: 42px; align-self: flex-start; }
+.gaptext { display: flex; flex-direction: column; gap: 12px; line-height: 2.3; }
+.gapwrap { white-space: nowrap; }
+input.gap { width: 11em; max-width: 60vw; margin-left: 2px; }
+
+/* results */
+.big { font: 700 44px/1 var(--display); font-variant-numeric: tabular-nums; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 18px; }
+.facts div { display: flex; flex-direction: column; gap: 4px; }
+.facts b { font: 500 19px/1.2 var(--mono); font-variant-numeric: tabular-nums; }
+.flag { color: var(--warn); font-weight: 600; }
+.answer-text { white-space: pre-wrap; overflow-wrap: anywhere; font: 400 17px/1.7 var(--body); margin: 0; }
+.copybox { width: 100%; box-sizing: border-box; min-height: 180px; font: 500 13px/1.5 var(--mono); padding: 10px; border: 1.5px solid var(--muted); border-radius: 6px; background: var(--bg); color: var(--ink); }
+.rev { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 14px; border-top: 1px solid var(--line); }
+.rev:first-child { border-top: 0; }
+.pair { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 4px 12px; font-size: 16px; margin: 0; }
+.pair dt { color: var(--muted); } .pair dd { margin: 0; overflow-wrap: anywhere; }
+.tick { color: var(--good); font-weight: 600; } .cross { color: var(--bad); font-weight: 600; }
+
+/* figures for Task 1. They are test material, so they are static like the image in the real test: no hover values. */
+figure.chart { margin: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+figure.chart figcaption { font: 700 15px/1.3 var(--display); }
+.unit { font-size: 13px; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; color: var(--ink); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+.legend i.ln { height: 3px; }
+svg.plot { width: 100%; height: auto; max-width: 600px; display: block; }
+svg.plot.wide { min-width: 440px; }   /* on a phone the plot scrolls sideways instead of shrinking its labels */
+svg.plot text { font: 400 12px var(--body); fill: var(--muted); }
+svg.plot text.val { fill: var(--ink); font-weight: 500; }
+svg.plot .grid { stroke: var(--grid); stroke-width: 1; }
+svg.plot .axis { stroke: var(--muted); stroke-width: 1; }
+.c1 { --c: var(--s1); } .c2 { --c: var(--s2); } .c3 { --c: var(--s3); } .c4 { --c: var(--s4); } .c5 { --c: var(--s5); }
+svg.plot .ln { fill: none; stroke: var(--c); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+svg.plot .dot { fill: var(--c); stroke: var(--surface); stroke-width: 2; }
+svg.plot .fill { fill: var(--c); }
+svg.plot .slice { fill: var(--c); stroke: var(--surface); stroke-width: 2; }
+.legend i { background: var(--c); }
+.pies { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.pies > div { flex: 1 1 200px; max-width: 280px; text-align: center; }
+.pies b { font: 700 15px/1.3 var(--display); }
+.tablewrap { overflow-x: auto; }
+table.data { border-collapse: collapse; font-size: 16px; }
+table.data th, table.data td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+table.data th { background: var(--bg); font-weight: 600; }
+table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.flow { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+.flow li { display: flex; flex-direction: column; align-items: flex-start; }
+.flow .box { border: 1.5px solid var(--muted); border-radius: 6px; padding: 9px 12px; background: var(--bg); font-size: 15.5px; }
+.flow li:not(:last-child)::after { content: "\2193"; color: var(--muted); padding: 2px 0 2px 18px; font-size: 18px; line-height: 1.2; }
+.fork { display: flex; flex-wrap: wrap; gap: 10px; padding-left: 18px; margin-top: 4px; }
+.fork div { display: flex; flex-direction: column; gap: 4px; max-width: 220px; }
+.fork small { color: var(--muted); font-size: 13px; }
+.maps { display: flex; flex-wrap: wrap; gap: 16px; }
+.map { flex: 1 1 240px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.map .head { display: flex; justify-content: space-between; align-items: baseline; }
+.map .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 2px solid var(--muted); }
+.map .grid3 div { min-height: 62px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 6px; font-size: 14px; line-height: 1.3; border: 1px dashed var(--line); overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: no-preference) { button.go, .door { transition: border-color .15s, opacity .15s; } }
+</style>
+
+<main id="app"></main>
+
+<script src="mark.js"></script>
+<script>var READING = [], WRITING = [];</script>
+<script src="bank-writing.js"></script>
+<script src="bank-claude.js"></script>
+<script src="bank-codex.js"></script>
+<script>
+(function () {
+'use strict';
+var app = document.getElementById('app');
+var TEST_DAY = new Date(2027, 0, 10);
+var KEY = 'ielts-practice-v1';
+var CAUSES = [['LOC', 'could not find the place'], ['PAR', 'missed the paraphrase'], ['NG', 'True / False / Not Given confusion'],
+  ['HEAD', 'chose a detail as a heading'], ['TIME', 'ran out of time'], ['COPY', 'spelling or word limit'], ['VOC', 'did not know the word']];
+
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function byId(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
+function mmss(sec) { sec = Math.max(0, Math.round(sec)); var m = Math.floor(sec / 60), s = sec % 60; return m + ':' + (s < 10 ? '0' : '') + s; }
+function today() { var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+function num(id) { return +id.slice(-2); }
+
+// ---- saved state. Storage can be missing or blocked; the page must still work for one sitting without it.
+var storageOk = true;
+var store = (function () {
+  try { var s = JSON.parse(localStorage.getItem(KEY)); if (s && s.v === 1 && Array.isArray(s.attempts)) return s; } catch (e) { storageOk = false; }
+  return { v: 1, attempts: [], draft: null };
+})();
+function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); storageOk = true; } catch (e) { storageOk = false; } return storageOk; }
+
+var S = store.draft && (store.draft.mode === 'writing' ? byId(WRITING, store.draft.id) : byId(READING, store.draft.id)) ? store.draft : null;  // the attempt in progress
+// An untimed attempt does not count the time the page was closed. A timed one does: the test clock never stops.
+if (S && !S.limitMin && S.savedAt) S.startedAt += Date.now() - S.savedAt;
+var showing = null;      // index of the attempt whose result is on screen
+var saveTimer = 0;
+function saveDraft() {
+  if (!S) return;
+  S.savedAt = Date.now(); store.draft = S;
+  var ok = save(), w = document.getElementById('nosave');
+  if (w) w.hidden = ok;
+}
+function persistSoon() { clearTimeout(saveTimer); saveTimer = setTimeout(saveDraft, 400); }
+// A finished attempt keeps its own copy of the prompt or passage, so later edits to the banks cannot change an old result.
+function itemOf(a) { return a.item || (a.type === 'writing' ? byId(WRITING, a.id) : byId(READING, a.id)); }
+
+function lastAttempt(type, id) { for (var i = store.attempts.length - 1; i >= 0; i--) if (store.attempts[i].type === type && store.attempts[i].id === id) return store.attempts[i]; return null; }
+
+// ---------------------------------------------------------------- figures
+function plotFrame(v, n, inner) {
+  var W = 560, H = 290, L = 48, R = 14, T = 12, B = 32, pw = W - L - R, ph = H - T - B;
+  var Y = function (val) { return T + ph - ph * val / v.yMax; };
+  var s = '<div class="tablewrap"><svg class="plot wide" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(v.unit) + '">';
+  for (var t = 0; t <= v.yMax + 1e-9; t += v.yStep)
+    s += '<line class="' + (t === 0 ? 'axis' : 'grid') + '" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(t) + '" y2="' + Y(t) + '"/><text x="' + (L - 8) + '" y="' + (Y(t) + 4) + '" text-anchor="end">' + t + esc(v.suffix || '') + '</text>';
+  return s + inner({ W: W, H: H, L: L, R: R, T: T, B: B, pw: pw, ph: ph, Y: Y }) + '</svg></div>';
+}
+function legend(names, line) {
+  if (names.length < 2) return '';
+  return '<div class="legend">' + names.map(function (n, i) { return '<span><i class="c' + (i + 1) + (line ? ' ln' : '') + '"></i>' + esc(n) + '</span>'; }).join('') + '</div>';
+}
+function lineChart(v) {
+  var n = v.x.length;
+  return legend(v.series.map(function (s) { return s.name; }), true) + plotFrame(v, n, function (f) {
+    var X = function (i) { return f.L + 28 + (f.pw - 56) * (n === 1 ? .5 : i / (n - 1)); };
+    var out = v.x.map(function (lab, i) { return '<text x="' + X(i) + '" y="' + (f.H - 10) + '" text-anchor="middle">' + esc(lab) + '</text>'; }).join('');
+    v.series.forEach(function (s, k) {
+      out += '<g class="c' + (k + 1) + '"><polyline class="ln" points="' + s.values.map(function (val, i) { return X(i) + ',' + f.Y(val); }).join(' ') + '"/>' +
+        s.values.map(function (val, i) { return '<circle class="dot" r="4.5" cx="' + X(i) + '" cy="' + f.Y(val) + '"/>'; }).join('') + '</g>';
+    });
+    return out;
+  });
+}
+function barChart(v) {
+  var m = v.categories.length, k = v.series.length;
+  return legend(v.series.map(function (s) { return s.name; })) + plotFrame(v, m, function (f) {
+    var band = f.pw / m, bw = Math.min(24, (band * .7 - 2 * (k - 1)) / k), group = k * bw + 2 * (k - 1), y0 = f.Y(0), out = '';
+    v.categories.forEach(function (cat, i) {
+      var x0 = f.L + band * i + (band - group) / 2;
+      out += '<text x="' + (f.L + band * (i + .5)) + '" y="' + (f.H - 10) + '" text-anchor="middle">' + esc(cat) + '</text>';
+      v.series.forEach(function (s, j) {
+        var x = x0 + j * (bw + 2), y = f.Y(s.values[i]), r = Math.min(4, (y0 - y) / 2);
+        out += '<path class="fill c' + (j + 1) + '" d="M' + x + ' ' + y0 + 'V' + (y + r) + 'Q' + x + ' ' + y + ' ' + (x + r) + ' ' + y + 'H' + (x + bw - r) + 'Q' + (x + bw) + ' ' + y + ' ' + (x + bw) + ' ' + (y + r) + 'V' + y0 + 'Z"/>' +
+          '<text class="val" x="' + (x + bw / 2) + '" y="' + (y - 5) + '" text-anchor="middle">' + esc(s.values[i]) + esc(v.suffix || '') + '</text>';
+      });
+    });
+    return out;
+  });
+}
+function pieCharts(v) {
+  var cats = v.pies[0].slices.map(function (s) { return s[0]; });
+  return legend(cats) + '<div class="pies">' + v.pies.map(function (p) {
+    var a = -Math.PI / 2, cx = 120, cy = 104, r = 74, total = p.slices.reduce(function (t, s) { return t + s[1]; }, 0), out = '';
+    p.slices.forEach(function (s) {
+      var da = 2 * Math.PI * s[1] / total, a2 = a + da, mid = a + da / 2, ci = cats.indexOf(s[0]) + 1;
+      out += '<path class="slice c' + ci + '" d="M' + cx + ' ' + cy + 'L' + (cx + r * Math.cos(a)) + ' ' + (cy + r * Math.sin(a)) + 'A' + r + ' ' + r + ' 0 ' + (da > Math.PI ? 1 : 0) + ' 1 ' + (cx + r * Math.cos(a2)) + ' ' + (cy + r * Math.sin(a2)) + 'Z"/>' +
+        '<text class="val" x="' + (cx + (r + 16) * Math.cos(mid)) + '" y="' + (cy + (r + 16) * Math.sin(mid) + 4) + '" text-anchor="middle">' + s[1] + '%</text>';
+      a = a2;
+    });
+    return '<div><b>' + esc(p.title) + '</b><svg class="plot" viewBox="0 0 240 208" role="img" aria-label="' + esc(p.title) + '">' + out + '</svg></div>';
+  }).join('') + '</div>';
+}
+function dataTable(v) {
+  return '<div class="tablewrap"><table class="data"><thead><tr>' + v.columns.map(function (c) { return '<th scope="col">' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+    v.rows.map(function (r) { return '<tr>' + r.map(function (c, i) { return i ? '<td class="num">' + esc(c) + '</td>' : '<th scope="row">' + esc(c) + '</th>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+}
+function processFlow(v) {
+  return '<ol class="flow">' + v.steps.map(function (s) {
+    if (typeof s === 'string') return '<li><span class="box">' + esc(s) + '</span></li>';
+    return '<li><span class="box">' + esc(s.text) + '</span><div class="fork">' + s.branch.map(function (b) { return '<div><small>↘ ' + esc(b[0]) + '</small><span class="box">' + esc(b[1]) + '</span></div>'; }).join('') + '</div></li>';
+  }).join('') + '</ol>';
+}
+function maps(v) {
+  return '<div class="maps">' + v.panels.map(function (p) {
+    return '<div class="map"><div class="head"><b>' + esc(p.title) + '</b><span class="muted">N ↑</span></div><div class="grid3">' +
+      p.grid.map(function (row) { return row.map(function (c) { return '<div>' + esc(c) + '</div>'; }).join(''); }).join('') + '</div></div>';
+  }).join('') + '</div>';
+}
+function figure(v) {
+  if (v.type === 'mixed') return v.parts.map(figure).join('');
+  var body = { line: lineChart, bar: barChart, pies: pieCharts, table: dataTable, process: processFlow, maps: maps }[v.type](v);
+  return '<figure class="chart">' + (v.caption ? '<figcaption>' + esc(v.caption) + '</figcaption>' : '') + (v.unit ? '<div class="unit">' + esc(v.unit) + '</div>' : '') + body +
+    (v.note ? '<p class="note">' + esc(v.note) + '</p>' : '') + '</figure>';
+}
+// The same figure as Markdown, so the tutor can check every number the answer quotes.
+function figureMd(v) {
+  var row = function (cells) { return '| ' + cells.join(' | ') + ' |'; };
+  var tbl = function (head, rows) { return [row(head), row(head.map(function () { return '---'; }))].concat(rows.map(row)).join('\n'); };
+  if (v.type === 'mixed') return v.parts.map(figureMd).join('\n\n');
+  var out = v.caption ? '*' + v.caption + '*\n' : '';
+  if (v.type === 'line') out += tbl([v.unit].concat(v.x), v.series.map(function (s) { return [s.name].concat(s.values); }));
+  if (v.type === 'bar') out += tbl([v.unit].concat(v.categories), v.series.map(function (s) { return [s.name].concat(s.values); }));
+  if (v.type === 'pies') out += tbl(['Share (%)'].concat(v.pies.map(function (p) { return p.title; })), v.pies[0].slices.map(function (s, i) { return [s[0]].concat(v.pies.map(function (p) { return p.slices[i][1]; })); }));
+  if (v.type === 'table') out += tbl(v.columns, v.rows);
+  if (v.type === 'process') out += v.steps.map(function (s, i) { return (i + 1) + '. ' + (typeof s === 'string' ? s : s.text + ' → ' + s.branch.map(function (b) { return b[0] + ': ' + b[1]; }).join('; ')); }).join('\n');
+  if (v.type === 'maps') out += v.panels.map(function (p) { return '**' + p.title + '** (north at the top)\n' + tbl(['West', 'Centre', 'East'], p.grid.map(function (r) { return r.map(function (c) { return c || '(open)'; }); })); }).join('\n\n');
+  return out + (v.note ? '\n\n' + v.note : '');
+}
+
+// ---------------------------------------------------------------- reading screens
+function passageHtml(p) {
+  return '<h2>' + esc(p.title) + '</h2>' + p.paragraphs.map(function (x) { return '<p class="para"><b class="plabel">' + esc(x.label) + '</b>' + esc(x.text) + '</p>'; }).join('');
+}
+function questionsHtml(p, ans) {
+  var n = 0, out = '';
+  p.groups.forEach(function (g) {
+    out += '<section class="qgroup"><h3>Questions ' + (n + 1) + '–' + (n + g.items.length) + '</h3><p class="instr">' + esc(g.instruction) + '</p>';
+    if (g.kind === 'gap') {
+      var base = n;
+      out += '<div class="gaptext">' + g.text.split('\n').map(function (line) {
+        return '<p>' + esc(line).replace(/\{(\d+)\}/g, function (_, k) {
+          var q = base + (+k);
+          return '<span class="gapwrap"><b class="qn">' + q + '</b><input class="gap" id="q-' + q + '" data-n="' + q + '" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" aria-label="Answer ' + q + '" value="' + esc(ans[q] || '') + '"></span>';
+        }) + '</p>';
+      }).join('') + '</div>';
+      n += g.items.length;
+    } else {
+      var shared = g.options;
+      if (shared && shared.some(function (o) { return o.text; }))
+        out += '<ul class="optlist">' + shared.map(function (o) { return '<li><b>' + esc(o.key) + '</b>' + esc(o.text || '') + '</li>'; }).join('') + '</ul>';
+      g.items.forEach(function (it) {
+        n++;
+        var cur = ans[n] || '';
+        if (it.options) out += '<fieldset class="q"><legend><b class="qn">' + n + '</b>' + esc(it.text) + '</legend>' + it.options.map(function (o) {
+          return '<label class="radio"><input type="radio" name="q-' + n + '" data-n="' + n + '" value="' + esc(o.key) + '"' + (cur === o.key ? ' checked' : '') + '><span><b>' + esc(o.key) + '</b>&nbsp; ' + esc(o.text) + '</span></label>'; }).join('') + '</fieldset>';
+        else if (shared.length <= 3) out += '<div class="q"><p><b class="qn">' + n + '</b>' + esc(it.text) + '</p><div class="seg" role="group" aria-label="Answer ' + n + '">' + shared.map(function (o) {
+          return '<button type="button" data-act="seg" data-n="' + n + '" data-val="' + esc(o.key) + '" aria-pressed="' + (cur === o.key) + '">' + esc(o.key) + '</button>'; }).join('') + '</div></div>';
+        else out += '<div class="q"><label for="q-' + n + '"><b class="qn">' + n + '</b>' + esc(it.text) + '</label><select id="q-' + n + '" data-n="' + n + '"><option value="">Choose</option>' + shared.map(function (o) {
+          return '<option value="' + esc(o.key) + '"' + (cur === o.key ? ' selected' : '') + '>' + esc(o.key) + '</option>'; }).join('') + '</select></div>';
+      });
+    }
+    out += '</section>';
+  });
+  return out;
+}
+function gapLine(g, k) {
+  var line = g.text.split('\n').filter(function (l) { return l.indexOf('{' + k + '}') > -1; })[0] || '';
+  return line.replace('{' + k + '}', '______').replace(/\{\d+\}/g, '(...)');
+}
+function correctText(q) {
+  if (q.group.kind === 'gap') return q.item.answers.join(' / ');
+  var o = (q.item.options || q.group.options).filter(function (x) { return x.key === q.item.answer; })[0];
+  return o.key + (o.text ? ' — ' + o.text : '');
+}
+function reviewHtml(p, a) {
+  var flat = flatten(p);
+  return markPassage(p, a.answers).map(function (r, i) {
+    var q = flat[i], stem = q.group.kind === 'gap' ? gapLine(q.group, q.ii + 1) : q.item.text;
+    return '<div class="rev"><p><b class="qn">' + r.n + '</b><span class="label">' + esc(r.qtype) + '</span></p><p>' + esc(stem) + '</p><dl class="pair">' +
+      '<dt>Your answer</dt><dd>' + (r.given ? esc(r.given) : '<i>blank</i>') + ' &nbsp;' + (r.right ? '<span class="tick">Right</span>' : '<span class="cross">Wrong</span>') + '</dd>' +
+      (r.right ? '' : '<dt>Correct</dt><dd>' + esc(correctText(q)) + '</dd>') + '<dt>Evidence</dt><dd>' + esc(r.evidence) + '</dd>' +
+      (r.right ? '' : '<dt><label for="cause-' + r.n + '">Why I missed it</label></dt><dd><select id="cause-' + r.n + '" data-cause="' + r.n + '"><option value="">Choose a cause</option>' +
+        CAUSES.map(function (c) { return '<option value="' + c[0] + '"' + (a.causes[r.n] === c[0] ? ' selected' : '') + '>' + c[0] + ' — ' + c[1] + '</option>'; }).join('') + '</select></dd>') +
+      '</dl></div>';
+  }).join('');
+}
+
+// ---------------------------------------------------------------- the attempt
+function limitFor(mode, item) { return mode === 'reading' ? 20 : item.task === 1 ? 20 : 40; }
+function start(mode, id, timed) {
+  var item = mode === 'writing' ? byId(WRITING, id) : byId(READING, id);
+  S = { mode: mode, id: id, startedAt: Date.now(), limitMin: timed ? limitFor(mode, item) : 0 };
+  if (mode === 'writing') { S.text = ''; S.pasted = 0; } else S.answers = {};
+  showing = null; render(); saveDraft();
+}
+function clockText() {
+  var gone = (Date.now() - S.startedAt) / 1000;
+  return S.limitMin ? S.limitMin * 60 - gone : -gone;   // positive = seconds left; negative = seconds elapsed on an untimed attempt
+}
+function tick() {
+  if (!S) return;
+  var left = clockText(), el = document.getElementById('clock');
+  if (S.limitMin && left <= 0) return finish(true);
+  if (el) { el.textContent = mmss(Math.abs(left)); el.className = 'clock' + (S.limitMin && left <= 60 ? ' out' : S.limitMin && left <= 300 ? ' low' : ''); }
+}
+function finish(timeUp) {
+  clearTimeout(saveTimer);
+  var now = Date.now(), end = S.limitMin ? Math.min(now, S.startedAt + S.limitMin * 60000) : now;
+  var item = S.mode === 'writing' ? byId(WRITING, S.id) : byId(READING, S.id);
+  var a = { type: S.mode, id: S.id, date: today(), limitMin: S.limitMin, usedSec: Math.round((end - S.startedAt) / 1000), timeUp: !!timeUp, item: JSON.parse(JSON.stringify(item)) };
+  if (S.mode === 'writing') { a.text = S.text; a.words = words(S.text); a.pasted = S.pasted; }
+  else { var res = markPassage(item, S.answers); a.answers = S.answers; a.score = res.filter(function (r) { return r.right; }).length; a.total = res.length; a.causes = {}; }
+  store.attempts.push(a); store.draft = null; save();
+  S = null; showing = store.attempts.length - 1; render();
+}
+function answered() { var c = 0; for (var k in S.answers) if (String(S.answers[k]).trim()) c++; return c; }
+
+function examHtml() {
+  var timedNote = S.limitMin ? S.limitMin + ' minutes' : 'No timer';
+  var bar = function (label, title, meter) {
+    return '<header class="bar"><div class="which"><span class="label">' + esc(label) + ' · ' + timedNote + '</span><b>' + esc(title) + '</b></div>' + meter +
+      '<div class="clock" id="clock" role="timer" aria-label="' + (S.limitMin ? 'Time left' : 'Time used') + '">' + mmss(Math.abs(clockText())) + '</div>' +
+      '<button class="go" id="finish" data-act="ask-finish">Finish</button>' +
+      '<span class="flag" id="nosave" hidden>This browser is not saving your work. Do not close or reload the page.</span>' +
+      '<div class="confirm" id="confirm" role="alert" hidden><span id="confirm-text"></span><button class="go small" id="yes-finish" data-act="finish">Yes, finish</button><button class="alt small" data-act="keep">Keep going</button></div>' +
+      '</header>';
+  };
+  if (S.mode === 'writing') {
+    var w = byId(WRITING, S.id), min = w.task === 1 ? 150 : 250;
+    return '<div class="exam">' + bar('Writing Task ' + w.task, 'Prompt ' + num(w.id) + ' · ' + w.kind, '<div class="meter"><b id="wc">' + words(S.text) + '</b> words · at least ' + min + '</div>') +
+      '<div class="panes"><section class="pane" aria-label="Task">' + promptHtml(w) + '</section>' +
+      '<section class="pane write"><textarea id="essay" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" aria-label="Your answer" placeholder="Type your answer here. There is no spell-check, as in the test.">' + esc(S.text) + '</textarea></section></div></div>';
+  }
+  var p = byId(READING, S.id);
+  return '<div class="exam">' + bar('Reading · level ' + p.level, p.title, '<div class="meter"><b id="done">' + answered() + '</b> of 13 answered</div>') +
+    '<div class="panes"><section class="pane" aria-label="Passage">' + passageHtml(p) + '</section><section class="pane" aria-label="Questions">' + questionsHtml(p, S.answers) + '</section></div></div>';
+}
+function promptHtml(w) {
+  var min = w.task === 1 ? 150 : 250;
+  return '<p class="muted">You should spend about ' + (w.task === 1 ? 20 : 40) + ' minutes on this task.</p><p class="task">' + esc(w.prompt) + '</p><p class="rubric">' + esc(w.rubric) + '</p><p><b>Write at least ' + min + ' words.</b></p>' +
+    (w.visual ? figure(w.visual) : '') + (w.note ? '<p class="note">' + esc(w.note) + '</p>' : '');
+}
+
+// ---------------------------------------------------------------- results and export
+function conditions(a) {
+  return (a.limitMin ? 'timed, ' + a.limitMin + ' minutes' : 'no timer') + (a.timeUp ? ' (time ran out)' : '');
+}
+function exportMd(a) {
+  if (a.type === 'writing') {
+    var w = itemOf(a), min = w.task === 1 ? 150 : 250;
+    return '**IELTS Practice · Writing Task ' + w.task + ' · Prompt ' + num(w.id) + ' (' + w.kind + ': ' + w.title + ')**\n' +
+      '- Date: ' + a.date + ' · Conditions: ' + conditions(a) + ' · Time used: ' + mmss(a.usedSec) + '\n' +
+      '- Words: ' + a.words + ' (minimum ' + min + (a.words >= min ? ' met' : ' NOT met') + ') · Typed in the app with no spell-check · Pasted text: ' + (a.pasted ? a.pasted + ' characters' : 'none') + '\n\n' +
+      '**Prompt**\n' + w.prompt + ' ' + w.rubric + ' Write at least ' + min + ' words.\n\n' + (w.visual ? '**Data shown**\n' + figureMd(w.visual) + '\n\n' : '') +
+      '**My answer (unchanged)**\n\n' + a.text;
+  }
+  var p = itemOf(a), res = markPassage(p, a.answers), flat = flatten(p), types = {};
+  res.forEach(function (r) { var t = types[r.qtype] = types[r.qtype] || [0, 0]; t[1]++; if (r.right) t[0]++; });
+  var wrong = res.filter(function (r) { return !r.right; });
+  return '**IELTS Practice · Reading · "' + p.title + '" (level ' + p.level + ', written by ' + p.author + ')**\n' +
+    '- Date: ' + a.date + ' · Conditions: ' + conditions(a) + ' · Time used: ' + mmss(a.usedSec) + '\n' +
+    '- Score: ' + res.filter(function (r) { return r.right; }).length + '/' + res.length + ' (tutor-written practice passage, so no band)\n' +
+    '- By question type: ' + Object.keys(types).map(function (t) { return t + ' ' + types[t][0] + '/' + types[t][1]; }).join('; ') + '\n' +
+    (wrong.length ? '- Wrong answers:\n' + wrong.map(function (r) {
+      return '  - Q' + r.n + ' (' + r.qtype + '): I answered ' + (r.given ? '"' + r.given + '"' : 'nothing') + '; correct is "' + correctText(flat[r.n - 1]) + '". Cause: ' + (a.causes[r.n] || 'not chosen');
+    }).join('\n') : '- Wrong answers: none');
+}
+function resultHtml(i) {
+  var a = store.attempts[i];
+  var copy = '<div class="stack"><div class="row"><button class="go" data-act="copy">Copy for the IELTS chat</button><button class="alt" data-act="leave">Done</button></div>' +
+    '<p class="muted" id="copied" role="status">' + (a.type === 'writing' ? 'Paste it into the IELTS chat. The tutor gives a band estimate for each of the four marking criteria.' : 'Choose a cause for each wrong answer first, then paste the result into the IELTS chat. The tutor writes the Log.') + '</p>' +
+    '<textarea class="copybox" id="copybox" readonly hidden aria-label="Result as text"></textarea></div>';
+  var warn = storageOk ? '' : '<p class="flag">This browser is not saving your work. Copy the result before you close the page.</p>';
+  if (a.type === 'writing') {
+    var w = itemOf(a), min = w.task === 1 ? 150 : 250;
+    return '<div class="sheet"><span class="label">Writing Task ' + w.task + ' · ' + a.date + '</span><h1>Prompt ' + num(w.id) + ': ' + esc(w.title) + '</h1>' +
+      '<div class="facts"><div><span class="label">Words</span><b>' + a.words + '</b>' + (a.words >= min ? '' : '<span class="flag">Under the minimum of ' + min + '</span>') + '</div>' +
+      '<div><span class="label">Time used</span><b>' + mmss(a.usedSec) + '</b><span class="muted">' + conditions(a) + '</span></div>' +
+      '<div><span class="label">Pasted text</span><b>' + (a.pasted ? a.pasted + ' chars' : 'none') + '</b></div></div>' + warn + copy +
+      (w.model ? '<p class="note">This prompt has a model answer in the course notes (Writing Task ' + w.task + ', Model answers). Read it now, after your own attempt.</p>' : '') + '</div>' +
+      '<div class="sheet"><span class="label">The task</span>' + promptHtml(w) + '</div>' +
+      '<div class="sheet"><span class="label">Your answer, unchanged</span><pre class="answer-text">' + esc(a.text || '(nothing written)') + '</pre></div>';
+  }
+  var p = itemOf(a), res = markPassage(p, a.answers), score = res.filter(function (r) { return r.right; }).length;
+  return '<div class="exam"><header class="bar"><div class="which"><span class="label">Reading result · ' + a.date + ' · ' + conditions(a) + '</span><b>' + esc(p.title) + '</b></div>' +
+    '<div class="meter">Time used <b>' + mmss(a.usedSec) + '</b></div><div class="big">' + score + '<span class="muted"> / ' + res.length + '</span></div></header>' +
+    '<div class="panes"><section class="pane" aria-label="Passage">' + passageHtml(p) + '</section><section class="pane" aria-label="Review">' + warn + copy +
+    '<p class="note">Written by ' + esc(p.author) + ' as practice. It is not an official test, so the score is not a band.</p>' + reviewHtml(p, a) + '</section></div></div>';
+}
+
+// ---------------------------------------------------------------- choosing work
+function navHtml(cur) {
+  return '<nav aria-label="Sections">' + [['home', 'Home'], ['writing', 'Writing'], ['reading', 'Reading'], ['history', 'History']].map(function (x) {
+    return '<a href="#' + x[0] + '"' + (cur === x[0] ? ' aria-current="page"' : '') + '>' + x[1] + '</a>'; }).join('') + '</nav>';
+}
+function attemptLine(a, i) {
+  var title, detail, it = itemOf(a);
+  if (!it) return '<div class="item"><div class="what"><b>' + esc(a.id) + '</b><span class="muted">' + esc(a.date) + ' · this item is no longer in the app, so the attempt cannot be opened</span></div></div>';
+  if (a.type === 'writing') { title = 'Writing Task ' + it.task + ' · Prompt ' + num(it.id) + ': ' + it.title; detail = a.words + ' words in ' + mmss(a.usedSec); }
+  else { title = 'Reading · ' + it.title; detail = a.score + '/' + a.total + ' in ' + mmss(a.usedSec); }
+  return '<div class="item"><div class="what"><b>' + esc(title) + '</b><span class="muted">' + esc(a.date) + ' · ' + esc(detail) + ' · ' + conditions(a) + '</span></div><button class="alt small" data-act="open" data-i="' + i + '">Open</button></div>';
+}
+function homeHtml() {
+  var days = Math.ceil((TEST_DAY - new Date(new Date().toDateString())) / 864e5);
+  var wDone = WRITING.filter(function (w) { return lastAttempt('writing', w.id); }).length, rDone = READING.filter(function (p) { return lastAttempt('reading', p.id); }).length;
+  var recent = store.attempts.map(attemptLine).reverse().slice(0, 3).join('');
+  return '<div class="spread"><h1>IELTS Practice</h1><div class="days">' + (days > 0 ? '<b>' + days + '</b>days to the test on 10 January' : days === 0 ? '<b>Today</b>is test day' : 'The test date has passed') + '</div></div>' + navHtml('home') +
+    (storageOk ? '' : '<p class="flag">This browser is not saving your work. Attempts last only until you close the page.</p>') +
+    '<div class="doors"><a class="door" href="#writing"><span class="label">Typed, no spell-check</span><b>Writing</b><small>' + WRITING.filter(function (w) { return w.task === 1; }).length + ' Task 1 prompts with real charts and ' + WRITING.filter(function (w) { return w.task === 2; }).length + ' Task 2 essay prompts. Countdown and live word count. ' + wDone + ' attempted.</small></a>' +
+    '<a class="door" href="#reading"><span class="label">Passage left, questions right</span><b>Reading</b><small>' + READING.length + ' passages of 13 questions, marked on the spot with the evidence for every answer. ' + rDone + ' attempted.</small></a></div>' +
+    (recent ? '<div class="sheet"><span class="label">Latest attempts</span><div>' + recent + '</div></div>' : '') +
+    '<p class="muted">The prompts and passages were written by Claude and Codex for practice. They are not official IELTS material. Reading shows a raw score and never a band; your band comes from official tests. Results are copied into the IELTS chat, where the tutor marks Writing and keeps the Log.</p>';
+}
+function tagsHtml(x, last) {
+  return '<div class="tags"><span class="tag">' + esc(x.kind || 'Level ' + x.level) + '</span>' + (x.drill ? '<span class="tag">' + esc(x.drill) + '</span>' : '') +
+    (x.reserved ? '<span class="tag hold">' + esc(x.reserved) + '</span>' : '') + (last ? '<span class="tag done">Done ' + last.date + '</span>' : '') + '</div>';
+}
+function startButtons(mode, id, min) {
+  return '<div class="row"><button class="go small" data-act="start" data-mode="' + mode + '" data-id="' + id + '" data-timed="1">Start · ' + min + ' min</button><button class="alt small" data-act="start" data-mode="' + mode + '" data-id="' + id + '" data-timed="">No timer</button></div>';
+}
+function writingHtml() {
+  var block = function (task) {
+    return '<div class="sheet"><div><h2>Task ' + task + '</h2><p class="muted">' + (task === 1 ? 'Describe a chart, table, process or map. 20 minutes, at least 150 words.' : 'Write an essay. 40 minutes, at least 250 words. Task 2 counts for more than Task 1.') + '</p></div><div>' +
+      WRITING.filter(function (w) { return w.task === task; }).map(function (w) {
+        var last = lastAttempt('writing', w.id);
+        return '<div class="item"><div class="what"><b>Prompt ' + num(w.id) + (last ? ': ' + esc(w.title) : '') + '</b>' + tagsHtml(w, last) + '</div>' + startButtons('writing', w.id, task === 1 ? 20 : 40) + '</div>';
+      }).join('') + '</div></div>';
+  };
+  return '<h1>Writing</h1>' + navHtml('writing') + '<p class="muted">The question stays hidden until you start, so every prompt is unseen. Do the prompt your tutor names for the drill. Starting the timer is final: there is no pause.</p>' + block(1) + block(2);
+}
+function readingHtml() {
+  var list = READING.slice().sort(function (a, b) { return a.level - b.level || a.title.localeCompare(b.title); });
+  return '<h1>Reading</h1>' + navHtml('reading') + '<p class="muted">One passage and 13 questions, as in one part of the test. Level 1 is like Passage 1 (easiest), level 3 like Passage 3. Starting the timer is final: there is no pause.</p>' +
+    '<div class="sheet"><div>' + (list.length ? list.map(function (p) {
+      var last = lastAttempt('reading', p.id);
+      return '<div class="item"><div class="what"><b>' + esc(p.title) + '</b><div class="tags"><span class="tag">Level ' + p.level + '</span><span class="tag">Written by ' + esc(p.author) + '</span>' +
+        (last ? '<span class="tag done">' + last.score + '/' + last.total + ' on ' + last.date + '</span>' : '') + '</div></div>' + startButtons('reading', p.id, 20) + '</div>';
+    }).join('') : '<p class="muted">No passages are loaded.</p>') + '</div></div>';
+}
+function historyHtml() {
+  var lines = store.attempts.map(attemptLine).reverse().join('');
+  return '<h1>History</h1>' + navHtml('history') + '<div class="sheet">' + (lines ? '<div>' + lines + '</div>' : '<p class="muted">Nothing yet. Finished attempts are listed here, on this device only.</p>') + '</div>' +
+    (lines ? '<div class="row" id="clearrow"><button class="alt small" data-act="ask-clear">Delete all history</button></div>' : '');
+}
+
+function render() {
+  var route = (location.hash || '#home').slice(1), html;
+  if (S) html = examHtml();
+  else if (showing != null && store.attempts[showing] && itemOf(store.attempts[showing])) html = resultHtml(showing);
+  else html = route === 'writing' ? writingHtml() : route === 'reading' ? readingHtml() : route === 'history' ? historyHtml() : homeHtml();
+  app.innerHTML = html;
+  if (!S) window.scrollTo(0, 0);
+}
+
+// ---------------------------------------------------------------- events
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-act]'); if (!b) return;
+  var act = b.dataset.act;
+  if (act === 'start') start(b.dataset.mode, b.dataset.id, !!b.dataset.timed);
+  else if (act === 'ask-finish') {   // shown in place: a re-render here would throw away the caret and the scroll position
+    document.getElementById('confirm-text').textContent = (S.limitMin ? 'Finish now with ' + mmss(clockText()) + ' left? ' : 'Finish and save this attempt? ') + 'You cannot reopen it.';
+    document.getElementById('confirm').hidden = false; document.getElementById('yes-finish').focus();
+  }
+  else if (act === 'keep') { document.getElementById('confirm').hidden = true; document.getElementById('finish').focus(); }
+  else if (act === 'finish') { keepText(); finish(false); }
+  else if (act === 'seg') {
+    S.answers[b.dataset.n] = S.answers[b.dataset.n] === b.dataset.val ? '' : b.dataset.val;
+    [].forEach.call(b.parentNode.children, function (x) { x.setAttribute('aria-pressed', String(S.answers[b.dataset.n] === x.dataset.val)); });
+    afterAnswer();
+  }
+  else if (act === 'open') { showing = +b.dataset.i; render(); }
+  else if (act === 'leave') { showing = null; render(); }
+  else if (act === 'copy') copyResult(b);
+  else if (act === 'ask-clear') document.getElementById('clearrow').innerHTML = '<span>Delete every saved attempt on this device?</span><button class="go small" data-act="clear">Yes, delete</button><button class="alt small" data-act="leave">Keep them</button>';
+  else if (act === 'clear') { store.attempts = []; save(); render(); }
+});
+function keepText() { var t = document.getElementById('essay'); if (t && S && S.mode === 'writing') S.text = t.value; }
+function afterAnswer() { var d = document.getElementById('done'); if (d) d.textContent = answered(); persistSoon(); }
+document.addEventListener('input', function (e) {
+  if (!S) return;
+  if (e.target.id === 'essay') { S.text = e.target.value; document.getElementById('wc').textContent = words(S.text); persistSoon(); }
+  else if (e.target.dataset.n) { S.answers[e.target.dataset.n] = e.target.value; afterAnswer(); }
+});
+document.addEventListener('change', function (e) {
+  if (S && e.target.dataset.n) { S.answers[e.target.dataset.n] = e.target.value; afterAnswer(); }
+  else if (e.target.dataset.cause && showing != null) { store.attempts[showing].causes[e.target.dataset.cause] = e.target.value; save(); }
+});
+document.addEventListener('paste', function (e) {
+  if (S && e.target.id === 'essay') S.pasted += ((e.clipboardData && e.clipboardData.getData('text')) || '').length;
+});
+function copyResult(btn) {
+  var text = exportMd(store.attempts[showing]), note = document.getElementById('copied'), box = document.getElementById('copybox');
+  var fallback = function () { box.hidden = false; box.value = text; box.focus(); box.select(); note.textContent = 'Copying is blocked here. The result is selected below: copy it yourself.'; };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { note.textContent = 'Copied. Paste it into the IELTS chat.'; btn.textContent = 'Copied'; }, fallback);
+  else fallback();
+}
+window.addEventListener('hashchange', function () { if (!S) { showing = null; render(); } });
+function saveNow() { if (S) { keepText(); clearTimeout(saveTimer); saveDraft(); } }
+window.addEventListener('pagehide', saveNow);
+document.addEventListener('visibilitychange', function () { if (document.hidden) saveNow(); });   // phones often skip pagehide
+setInterval(tick, 500);
+render();
+})();
+</script>

@@ -1,0 +1,1957 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>IELTS Practice</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a narrow column for choosing work; during an attempt, the two-pane screen of the computer test (source left, answer right). */
+:root {
+  --bg: #eef1f5; --surface: #ffffff; --ink: #14202c; --muted: #586877; --line: #d3dae2;
+  --accent: #1d5fc4; --on-accent: #ffffff; --good: #17754a; --bad: #b3261e; --warn: #8a5a00;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --grid: #e3e7ec;
+  --display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f151b; --surface: #18212a; --ink: #e7edf3; --muted: #94a4b3; --line: #2c3945;
+  --accent: #86b4ff; --on-accent: #0c1622; --good: #62d093; --bad: #ff8f85; --warn: #f0c060;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --grid: #26323d; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f151b; --surface: #18212a; --ink: #e7edf3; --muted: #94a4b3; --line: #2c3945;
+  --accent: #86b4ff; --on-accent: #0c1622; --good: #62d093; --bad: #ff8f85; --warn: #f0c060;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --grid: #26323d; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font: 400 17px/1.55 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 24px 48px; }
+main { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+h1 { font: 700 30px/1.1 var(--display); margin: 0; text-wrap: balance; }
+h2 { font: 700 21px/1.2 var(--display); margin: 0; text-wrap: balance; }
+h3 { font: 700 16px/1.3 var(--display); margin: 0; }
+p { margin: 0; }
+a { color: var(--accent); }
+.muted { color: var(--muted); font-size: 15px; }
+.label { font: 600 12px/1.2 var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.sheet { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.spread { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }
+
+nav { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line); }
+nav a { padding: 10px 14px; text-decoration: none; color: var(--muted); font-weight: 600; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+
+button { font: inherit; color: inherit; }
+button.go, button.alt { font: 600 16px/1 var(--body); padding: 13px 18px; border-radius: 6px; cursor: pointer; min-height: 46px; }
+button.go { background: var(--accent); color: var(--on-accent); border: 0; }
+button.alt { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+button.small { padding: 9px 12px; min-height: 40px; font-size: 15px; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.days { font: 500 15px/1.3 var(--body); color: var(--muted); }
+.days b { font: 500 26px/1 var(--mono); color: var(--ink); margin-right: 6px; font-variant-numeric: tabular-nums; }
+.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.door { text-align: left; text-decoration: none; color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: 6px; padding: 18px; display: flex; flex-direction: column; gap: 6px; }
+.door:hover { border-color: var(--accent); }
+.door b { font: 700 22px/1.2 var(--display); }
+.door small { color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+.item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 14px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line); }
+.item:first-of-type { border-top: 0; padding-top: 0; }
+.item .what { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.item .what b { font: 600 17px/1.3 var(--body); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 500 12.5px/1.2 var(--body); padding: 4px 8px; border-radius: 4px; background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+.tag.done { color: var(--good); border-color: var(--good); }
+.tag.hold { color: var(--warn); border-color: var(--warn); }
+@media (max-width: 520px) { .item { grid-template-columns: minmax(0, 1fr); } }
+
+/* the attempt screen */
+.exam { position: fixed; inset: 0; z-index: 5; background: var(--bg); display: flex; flex-direction: column; gap: 10px;
+  padding: max(10px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(10px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.bar { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; }
+.bar .which { display: flex; flex-direction: column; gap: 3px; margin-right: auto; min-width: 0; }
+.bar .which b { font: 700 17px/1.2 var(--display); overflow-wrap: anywhere; }
+.clock { font: 500 24px/1 var(--mono); font-variant-numeric: tabular-nums; min-width: 4.2ch; }
+.clock.low { color: var(--warn); } .clock.out { color: var(--bad); }
+.meter { font-size: 15px; color: var(--muted); } .meter b { color: var(--ink); font: 500 18px/1 var(--mono); font-variant-numeric: tabular-nums; }
+.confirm { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding-top: 8px; border-top: 1px solid var(--line); }
+.panes { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.pane { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px; overflow: auto; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.pane.write { padding: 0; }
+textarea#essay { flex: 1; width: 100%; box-sizing: border-box; border: 0; border-radius: 6px; resize: none; padding: 18px; background: var(--surface); color: var(--ink); font: 400 17px/1.7 var(--body); min-height: 240px; }
+textarea#essay:focus-visible { outline-offset: -3px; }
+@media (max-width: 860px) {
+  .panes { display: flex; flex-direction: column; overflow: auto; }
+  .pane { overflow: visible; flex: none; }
+  textarea#essay { min-height: 60vh; }
+}
+.task { font-size: 18px; line-height: 1.6; }
+.rubric { color: var(--muted); }
+.note { font-size: 15px; color: var(--muted); border-left: 3px solid var(--line); padding-left: 10px; }
+
+/* reading */
+.para { line-height: 1.7; max-width: 68ch; }
+.plabel { display: inline-block; font: 700 15px/1 var(--display); margin-right: 8px; color: var(--accent); }
+.qgroup { display: flex; flex-direction: column; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.qgroup:last-child { border-bottom: 0; }
+.instr { font-size: 15px; color: var(--muted); }
+.qn { display: inline-block; min-width: 1.6em; font: 500 15px/1 var(--mono); color: var(--accent); }
+.q { display: flex; flex-direction: column; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.q legend { padding: 0; margin-bottom: 8px; }
+.optlist { list-style: none; margin: 0; padding: 12px 14px; background: var(--bg); border-radius: 6px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; }
+.optlist b { font: 500 15px/1 var(--mono); display: inline-block; min-width: 2.2em; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { padding: 9px 12px; min-height: 42px; border-radius: 6px; border: 1.5px solid var(--muted); background: var(--bg); cursor: pointer; font: 600 14px/1 var(--body); }
+.seg button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--on-accent); }
+.radio { display: flex; gap: 8px; align-items: baseline; padding: 8px 10px; border: 1.5px solid var(--line); border-radius: 6px; cursor: pointer; }
+.radio:has(input:checked) { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+select, input.gap { font: 500 16px/1.2 var(--body); padding: 9px 10px; border: 1.5px solid var(--muted); border-radius: 6px; background: var(--bg); color: var(--ink); }
+select { max-width: 100%; min-height: 42px; align-self: flex-start; }
+.gaptext { display: flex; flex-direction: column; gap: 12px; line-height: 2.3; }
+.gapwrap { white-space: nowrap; }
+input.gap { width: 11em; max-width: 60vw; margin-left: 2px; }
+
+/* results */
+.big { font: 700 44px/1 var(--display); font-variant-numeric: tabular-nums; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 18px; }
+.facts div { display: flex; flex-direction: column; gap: 4px; }
+.facts b { font: 500 19px/1.2 var(--mono); font-variant-numeric: tabular-nums; }
+.flag { color: var(--warn); font-weight: 600; }
+.answer-text { white-space: pre-wrap; overflow-wrap: anywhere; font: 400 17px/1.7 var(--body); margin: 0; }
+.copybox { width: 100%; box-sizing: border-box; min-height: 180px; font: 500 13px/1.5 var(--mono); padding: 10px; border: 1.5px solid var(--muted); border-radius: 6px; background: var(--bg); color: var(--ink); }
+.rev { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 14px; border-top: 1px solid var(--line); }
+.rev:first-child { border-top: 0; }
+.pair { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 4px 12px; font-size: 16px; margin: 0; }
+.pair dt { color: var(--muted); } .pair dd { margin: 0; overflow-wrap: anywhere; }
+.tick { color: var(--good); font-weight: 600; } .cross { color: var(--bad); font-weight: 600; }
+
+/* figures for Task 1. They are test material, so they are static like the image in the real test: no hover values. */
+figure.chart { margin: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+figure.chart figcaption { font: 700 15px/1.3 var(--display); }
+.unit { font-size: 13px; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 14px; color: var(--ink); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+.legend i.ln { height: 3px; }
+svg.plot { width: 100%; height: auto; max-width: 600px; display: block; }
+svg.plot.wide { min-width: 440px; }   /* on a phone the plot scrolls sideways instead of shrinking its labels */
+svg.plot text { font: 400 12px var(--body); fill: var(--muted); }
+svg.plot text.val { fill: var(--ink); font-weight: 500; }
+svg.plot .grid { stroke: var(--grid); stroke-width: 1; }
+svg.plot .axis { stroke: var(--muted); stroke-width: 1; }
+.c1 { --c: var(--s1); } .c2 { --c: var(--s2); } .c3 { --c: var(--s3); } .c4 { --c: var(--s4); } .c5 { --c: var(--s5); }
+svg.plot .ln { fill: none; stroke: var(--c); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+svg.plot .dot { fill: var(--c); stroke: var(--surface); stroke-width: 2; }
+svg.plot .fill { fill: var(--c); }
+svg.plot .slice { fill: var(--c); stroke: var(--surface); stroke-width: 2; }
+.legend i { background: var(--c); }
+.pies { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.pies > div { flex: 1 1 200px; max-width: 280px; text-align: center; }
+.pies b { font: 700 15px/1.3 var(--display); }
+.tablewrap { overflow-x: auto; }
+table.data { border-collapse: collapse; font-size: 16px; }
+table.data th, table.data td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; }
+table.data th { background: var(--bg); font-weight: 600; }
+table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.flow { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+.flow li { display: flex; flex-direction: column; align-items: flex-start; }
+.flow .box { border: 1.5px solid var(--muted); border-radius: 6px; padding: 9px 12px; background: var(--bg); font-size: 15.5px; }
+.flow li:not(:last-child)::after { content: "\2193"; color: var(--muted); padding: 2px 0 2px 18px; font-size: 18px; line-height: 1.2; }
+.fork { display: flex; flex-wrap: wrap; gap: 10px; padding-left: 18px; margin-top: 4px; }
+.fork div { display: flex; flex-direction: column; gap: 4px; max-width: 220px; }
+.fork small { color: var(--muted); font-size: 13px; }
+.maps { display: flex; flex-wrap: wrap; gap: 16px; }
+.map { flex: 1 1 240px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.map .head { display: flex; justify-content: space-between; align-items: baseline; }
+.map .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 2px solid var(--muted); }
+.map .grid3 div { min-height: 62px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 6px; font-size: 14px; line-height: 1.3; border: 1px dashed var(--line); overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: no-preference) { button.go, .door { transition: border-color .15s, opacity .15s; } }
+</style>
+
+<main id="app"></main>
+
+<script>
+// Marking helpers shared by the page and check.mjs. Plain globals, no modules.
+var QTYPES = ['True / False / Not Given', 'Yes / No / Not Given', 'Matching headings', 'Matching information',
+  'Matching features', 'Matching sentence endings', 'Multiple choice', 'Summary completion', 'Note completion',
+  'Table completion', 'Sentence completion', 'Short-answer questions'];
+
+// Word count the way the computer test does it: runs of non-space characters.
+function words(s) { return (String(s == null ? '' : s).trim().match(/\S+/g) || []).length; }
+
+// Compare typed answers without caring about case, curly quotes, punctuation or extra spaces.
+function norm(s) {
+  return String(s == null ? '' : s).toLowerCase().replace(/[‘’]/g, "'")
+    .replace(/[^a-z0-9' -]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+// A gap answer is right only if it is inside the word limit and matches one accepted answer.
+function markGap(typed, item, maxWords) {
+  var t = norm(typed);
+  if (!t) return false;
+  if (maxWords && words(typed) > maxWords) return false;
+  return item.answers.some(function (a) { return norm(a) === t; });
+}
+
+function markChoice(chosen, item) { return chosen === item.answer; }
+
+// Every question of a passage, numbered 1..n in screen order: [{n, group, item, gi, ii}]
+function flatten(passage) {
+  var out = [], n = 0;
+  passage.groups.forEach(function (g, gi) {
+    g.items.forEach(function (it, ii) { out.push({ n: ++n, group: g, item: it, gi: gi, ii: ii }); });
+  });
+  return out;
+}
+
+// answers = {questionNumber: typed or chosen}. Returns [{n, qtype, right, given, correct, evidence}]
+function markPassage(passage, answers) {
+  return flatten(passage).map(function (q) {
+    var given = answers[q.n] == null ? '' : answers[q.n];
+    var right = q.group.kind === 'gap' ? markGap(given, q.item, q.group.maxWords) : markChoice(given, q.item);
+    return { n: q.n, qtype: q.group.qtype, right: right, given: given,
+      correct: q.group.kind === 'gap' ? q.item.answers[0] : q.item.answer, evidence: q.item.evidence };
+  });
+}
+</script>
+<script>var READING = [], WRITING = [];</script>
+<script>
+// Writing prompts. Written by Codex for the course notes,
+// turned into data by Claude so the app can draw the Task 1 figures. Original practice prompts, not official IELTS tasks.
+// All places and figures are invented.
+(function () {
+var T1 = 'Summarise the information by selecting and reporting the main features, and make comparisons where relevant.';
+var T2 = 'Give reasons for your answer and include any relevant examples from your own knowledge or experience.';
+function w1(n, kind, title, prompt, visual, extra) {
+  WRITING.push(Object.assign({ id: 'W1-' + (n < 10 ? '0' : '') + n, task: 1, kind: kind, title: title, prompt: prompt, rubric: T1, visual: visual }, extra || {}));
+}
+function w2(n, kind, title, prompt, extra) {
+  WRITING.push(Object.assign({ id: 'W2-' + (n < 10 ? '0' : '') + n, task: 2, kind: kind, title: title, prompt: prompt, rubric: T2 }, extra || {}));
+}
+
+// ---------- Task 1
+w1(1, 'Line graph', 'Library loans',
+  'The graph below shows the number of items borrowed each year from a town library between 2018 and 2024, by format.',
+  { type: 'line', unit: 'Loans per year (thousands)', x: ['2018', '2020', '2022', '2024'], yMax: 70, yStep: 10,
+    series: [{ name: 'Printed books', values: [60, 58, 54, 50] }, { name: 'E-books', values: [8, 15, 24, 38] }, { name: 'Audiobooks', values: [5, 8, 12, 20] }] },
+  { drill: 'W1-D1', model: true });
+
+w1(2, 'Line graph', 'Three bus routes',
+  'The graph below shows the average number of passengers per week on three bus routes in one town from 2019 to 2024.',
+  { type: 'line', unit: 'Passengers per week (thousands)', x: ['2019', '2020', '2021', '2022', '2023', '2024'], yMax: 50, yStep: 10,
+    series: [{ name: 'North route', values: [22, 18, 24, 30, 38, 44] }, { name: 'South route', values: [35, 28, 30, 31, 33, 34] }, { name: 'East route', values: [12, 10, 16, 22, 29, 37] }] },
+  { drill: 'W1-D3' });
+
+w1(3, 'Bar chart', 'Evening courses',
+  'The chart below shows the number of people in two age groups who enrolled in four evening courses at one centre in 2025.',
+  { type: 'bar', unit: 'Number of people', categories: ['Photography', 'Cooking', 'Coding', 'Gardening'], yMax: 120, yStep: 20,
+    series: [{ name: 'Under 30', values: [80, 60, 110, 35] }, { name: 'Aged 30 or over', values: [45, 90, 40, 75] }] },
+  { note: 'Enrolled means joined a course. Each person takes one of the four courses.', model: true });
+
+w1(4, 'Bar chart', 'Travel to school',
+  'The chart below shows how students at one school usually travelled to school in 2020 and 2025.',
+  { type: 'bar', unit: 'Percentage of students', suffix: '%', categories: ['Walking', 'Bus', 'Car', 'Bicycle'], yMax: 50, yStep: 10,
+    series: [{ name: '2020', values: [18, 30, 42, 10] }, { name: '2025', values: [25, 35, 25, 15] }] },
+  { drill: 'W1-D4 (tutor chooses 4, 6 or 8)' });
+
+w1(5, 'Pie charts', 'Household spending',
+  'The charts below show how the average household in one town divided its spending in 2015 and 2025.',
+  { type: 'pies', note: 'The total amount of money spent is not given.',
+    pies: [{ title: '2015', slices: [['Housing', 30], ['Food', 25], ['Transport', 20], ['Leisure', 15], ['Other', 10]] },
+      { title: '2025', slices: [['Housing', 38], ['Food', 22], ['Transport', 15], ['Leisure', 15], ['Other', 10]] }] },
+  { model: true });
+
+w1(6, 'Pie charts', 'Water use',
+  'The charts below show the shares of total water use in one district in 2000 and 2025.',
+  { type: 'pies', note: 'The total volume of water used is not shown.',
+    pies: [{ title: '2000', slices: [['Homes', 25], ['Industry', 45], ['Farming', 20], ['Public services', 10]] },
+      { title: '2025', slices: [['Homes', 35], ['Industry', 25], ['Farming', 25], ['Public services', 15]] }] },
+  { drill: 'W1-D4 (tutor chooses 4, 6 or 8)' });
+
+w1(7, 'Table', 'Journeys to a college',
+  'The table below compares four ways of making the same 10-kilometre journey to a college in 2025.',
+  { type: 'table', columns: ['Method', 'Journey time (minutes)', 'Direct cost (baht)'],
+    rows: [['Bus', 35, 20], ['Train', 22, 45], ['Car', 28, 70], ['Bicycle', 40, 0]] },
+  { note: 'Time covers the whole journey. Cost is what the traveller pays for one trip; buying and looking after the bicycle is not included. The baht is the money of Thailand.', model: true });
+
+w1(8, 'Table', 'Recreation sites',
+  'The table below gives information about visits to four recreation sites in 2020 and 2025, and the number of staff at each site in 2025.',
+  { type: 'table', columns: ['Site', 'Visits in 2020 (thousands)', 'Visits in 2025 (thousands)', 'Staff in 2025'],
+    rows: [['Pool', 42, 68, 12], ['Sports hall', 75, 72, 18], ['Art centre', 30, 55, 8], ['Public park', 90, 120, 22]] },
+  { note: 'Recreation means activities done for enjoyment. Visits count entries, not different people.', drill: 'W1-D4 (tutor chooses 4, 6 or 8)' });
+
+w1(9, 'Mixed charts', 'Bicycle hire',
+  'The graph below shows the average number of bicycle-hire trips per month in one city from 2019 to 2025. The pie chart shows the main purpose of those trips in 2025.',
+  { type: 'mixed', parts: [
+    { type: 'line', caption: 'Average monthly trips', unit: 'Trips per month (thousands)', x: ['2019', '2021', '2023', '2025'], yMax: 80, yStep: 20,
+      series: [{ name: 'Bicycle-hire trips', values: [20, 32, 50, 72] }] },
+    { type: 'pies', pies: [{ title: 'Main purpose of trips, 2025', slices: [['Travel to or from work', 50], ['Shopping', 20], ['Leisure', 30]] }] }] },
+  { note: 'Bicycle hire means paying to use a bicycle for a short time. Each trip has one main purpose.', model: true });
+
+w1(10, 'Mixed charts', 'Town waste',
+  'The bar chart below shows the total waste collected by one town in three years. The line graph shows the percentage of that waste sent for recycling.',
+  { type: 'mixed', parts: [
+    { type: 'bar', caption: 'Total waste collected', unit: 'Tonnes', categories: ['2016', '2020', '2024'], yMax: 500, yStep: 100,
+      series: [{ name: 'Total waste', values: [400, 450, 420] }] },
+    { type: 'line', caption: 'Share sent for recycling', unit: 'Percentage of total waste', suffix: '%', x: ['2016', '2020', '2024'], yMax: 60, yStep: 10,
+      series: [{ name: 'Sent for recycling', values: [20, 35, 50] }] }] },
+  { note: 'Recycling means processing used material so it can be used again.', drill: 'W1-D5' });
+
+w1(11, 'Process', 'Reusable bottles',
+  'The diagram below shows how a depot handles returned glass bottles.',
+  { type: 'process', steps: ['Used bottles arrive at the depot', 'Caps are removed', 'Bottles are rinsed with water',
+    'Bottles are washed with detergent at 70°C', 'Bottles are rinsed with clean water', 'Bottles are dried with warm air',
+    { text: 'Bottles are checked for cracks', branch: [['Cracked', 'Sent for recycling'], ['No cracks', 'Packed, 20 per crate, and delivered to cafés']] }] },
+  { note: 'A depot is a place where items are collected and prepared. Detergent is a cleaning liquid. A crate is a strong container for carrying goods.', drill: 'W1-D2 (introduction and overview only)', model: true });
+
+w1(12, 'Process', 'Dried apple pieces',
+  'The diagram below shows how packets of dried apple pieces are produced.',
+  { type: 'process', steps: ['Ripe apples are selected', 'Apples are washed', 'Cores are removed', 'Apples are cut into slices 5 mm thick',
+    'Slices are dried with hot air at 60°C for 6 hours', 'Slices are cooled for 30 minutes', '100 g is put into each packet', 'Packets are sealed and labelled'] },
+  { note: 'The core is the hard middle part of the apple that holds the seeds.', drill: 'W1-D6 (tutor chooses 12 or 14)' });
+
+w1(13, 'Maps', 'A community park',
+  'The maps below show a community park in 2010 and in 2025.',
+  { type: 'maps', note: 'The park is the same size in both years. A north-south path and an east-west path cross in the middle; both are wider in 2025.',
+    panels: [
+      { title: '2010', grid: [['Pond', 'Grass', 'Two tennis courts'], ['Flowerbeds', 'Paths cross', 'Storage shed'], ['Car park', 'Entrance', 'Grass']] },
+      { title: '2025', grid: [['Pond', 'Playground', 'One basketball court'], ['Flowerbeds', 'Paths cross (wider)', 'Café'], ['Bicycle parking', 'Entrance', 'Picnic area']] }] },
+  { drill: 'W1-D2 (introduction and overview only)', model: true });
+
+w1(14, 'Maps', 'A library proposal',
+  'The plans below show the ground floor of a library in 2026 and a proposal for the same floor in 2030.',
+  { type: 'maps', note: 'The outer walls stay the same. The areas open onto a central space; no new inside walls are planned. The 2030 plan is a proposal, not finished work.',
+    panels: [
+      { title: '2026', grid: [['Bookshelves', '', 'Bookshelves'], ['', 'Lending desk', 'Wall (no door)'], ["Children's reading area", 'Main entrance', 'Office']] },
+      { title: 'Proposed for 2030', grid: [['Study desks', '', 'Computer desks'], ['', 'Lending desk', 'New side entrance'], ["Children's reading area", 'Main entrance', 'Small café']] }] },
+  { drill: 'W1-D6 (tutor chooses 12 or 14)' });
+
+// ---------- Task 2
+var RES = 'Reserved for the exam-conditions drill W2-D7';
+w2(1, 'Opinion', 'Repair lessons', 'Secondary schools should teach every student how to repair simple household items. To what extent do you agree or disagree?', { model: true });
+w2(2, 'Opinion', 'Better buses', 'When improving city bus services, local councils should spend more on frequent departures than on making all journeys free. To what extent do you agree or disagree?', { drill: 'W2-D1 (one paragraph)' });
+w2(3, 'Opinion', 'Phone storage', "Secondary schools should keep students' phones in a secure place during the whole school day, including breaks. To what extent do you agree or disagree?", { drill: 'W2-D6 pool' });
+w2(4, 'Opinion', 'Four-day office week', 'Offices should allow employees to complete their usual weekly hours over four days instead of five. To what extent do you agree or disagree?', { reserved: RES });
+w2(5, 'Discuss both views', 'Library space', 'Some people think public libraries should use more space for shared work and study areas. Others think the main use of library space should remain storing books. Discuss both views and give your own opinion.', { model: true });
+w2(6, 'Discuss both views', 'School projects', 'Some teachers believe students learn more from group projects. Others believe individual projects are more useful. Discuss both views and give your own opinion.', { drill: 'W2-D2 (one paragraph)' });
+w2(7, 'Discuss both views', 'Space in a growing city', 'Some people believe unused land in a growing city should become parks. Others think it should be used to improve roads. Discuss both views and give your own opinion.', { drill: 'W2-D6 pool' });
+w2(8, 'Discuss both views', 'Learning about food', 'Some people believe parents should be mainly responsible for teaching children to prepare healthy meals. Others think schools should take this role. Discuss both views and give your own opinion.', { reserved: RES });
+w2(9, 'Advantages and disadvantages', 'Returnable containers', 'Some takeaway restaurants lend customers reusable food containers in return for a small deposit, which is repaid when the containers are returned. What are the advantages and disadvantages of this system?', { model: true });
+w2(10, 'Advantages and disadvantages', 'Flexible starting times', 'Some companies let staff choose when to start and finish work, provided they complete the required hours. Do the advantages of this approach outweigh the disadvantages?', { drill: 'Read in W2-D2' });
+w2(11, 'Advantages and disadvantages', 'Museum information', "Some museums now put detailed information about their exhibits on visitors' phones instead of displaying it beside each object. What are the advantages and disadvantages of this change?", { reserved: RES });
+w2(12, 'Advantages and disadvantages', 'Sharing tools', 'Some neighbourhoods run tool libraries, where residents borrow equipment for repairs and gardening. Do the advantages of these services outweigh the disadvantages?', { drill: 'W2-D3 (two paragraphs)' });
+w2(13, 'Problem and solution', 'School food waste', 'Many school dining halls throw away large amounts of prepared food at the end of each day. What problems does this cause, and what could schools do to reduce this waste?', { model: true });
+w2(14, 'Problem and solution', 'Noise at home', 'Many people who live in apartment buildings are disturbed by noise from neighbouring homes. What problems can this cause, and what measures could reduce them?', { drill: 'Read in W2-D2' });
+w2(15, 'Problem and solution', 'Unused bicycle routes', 'Some towns have built bicycle routes, but relatively few residents use them for daily travel. Why might this happen, and what could towns do to increase their use?', { drill: 'W2-D4 (two paragraphs)' });
+w2(16, 'Problem and solution', 'Public services online', 'As more public services move online, some older people find it difficult to use them. What problems can this create, and how could service providers help?', { reserved: RES });
+w2(17, 'Two-part question', 'Practical evening courses', 'In some towns, more adults are joining short evening courses in practical skills such as cooking or basic repairs. Why might these courses appeal to adults? How can course providers make them easier to attend?', { model: true });
+w2(18, 'Two-part question', 'Second-hand purchases', 'Some young adults now choose second-hand goods even when they can afford new ones. Why might they make this choice? Do you think this is a positive development?', { reserved: RES });
+w2(19, 'Two-part question', 'Family library visits', 'Some public libraries have begun running weekend activities for parents and children together. Why might families choose these activities? What benefits can they bring to the wider community?', { drill: 'W2-D5 (first full timed essay)' });
+w2(20, 'Two-part question', 'Walking on holiday', 'Some travellers spend much more time walking while on holiday than they do at home. Why might this happen? How could towns encourage their residents to walk more in daily life?', { drill: 'W2-D6 pool' });
+})();
+</script>
+<script>
+// Reading passages written by Claude. Original practice text, not official IELTS material. Format: CODEX-BRIEF.md
+(function () {
+READING.push({
+ "id": "r-claude-container",
+ "author": "Claude",
+ "title": "The box that changed trade",
+ "level": 1,
+ "paragraphs": [
+  {
+   "label": "A",
+   "text": "Until the middle of the twentieth century, most goods that crossed the sea, apart from bulk cargoes such as oil, coal and grain, were handled one piece at a time. Sacks, barrels, crates and bales arrived at the quay by lorry or train and waited in warehouses until a ship was ready to receive them. Gangs of dock workers then carried or wheeled each item to the water's edge, where it was usually lifted aboard by the ship's own derricks, which swung nets and slings of goods over the side. Other men stowed the load in the hold. Cargo handled in this way was known as break-bulk, and in principle it had changed little since the age of sail."
+  },
+  {
+   "label": "B",
+   "text": "The system was slow, expensive and unreliable. It was normal for a ship to spend a week or more in port, and during that time the vessel earned nothing for its owner. Goods were dropped, crushed or soaked as they were swung from quay to hold, and cases left standing on the dock were an easy target for thieves, whose activities shippers came to accept as a normal cost of business. Stowing was also a skilled puzzle, because every sack and crate had to be wedged into whatever space the previous one had left. As a result, handling cargo in port made up a large share of the price of moving it."
+  },
+  {
+   "label": "C",
+   "text": "The man usually credited with the solution was Malcom McLean, an American who had built his business on lorries rather than ships. His firm lost time and money whenever a lorry waited at a port while its load was taken out piece by piece. His idea was to lift the whole body of the lorry, with its contents untouched, on to a ship. To try it, he bought a shipping line and converted an old tanker, renamed the Ideal X. On 26 April 1956 she sailed from Newark, New Jersey, to Houston, Texas, with 58 metal boxes on her deck. The age of the container had begun, although few people noticed at the time."
+  },
+  {
+   "label": "D",
+   "text": "The idea was only the beginning. At first, each shipping line built boxes to its own dimensions, so one company's containers did not fit another's ships, trains or cranes. The breakthrough came in the 1960s, when the International Organization for Standardization, a body that sets technical standards, helped the industry to agree on a small set of sizes. The most common lengths became 20 and 40 feet, and every box was built with strong steel fittings at each of its eight corners, so that cranes, lorries and locking pins could all grip it in the same way. Because the sizes were fixed, a box filled in a factory in one country could travel by ship, train and lorry to a customer in another without ever being opened. Even today, the capacity of a ship is counted in twenty-foot units."
+  },
+  {
+   "label": "E",
+   "text": "Ports had to change as well. Container ships need deep water, giant cranes and large areas of flat land where thousands of boxes can be stacked and then collected by lorry or train. The old docks in city centres, with their narrow quays and crowded warehouses, were too cramped for this work. New terminals were therefore built on open land elsewhere, and trade moved to them. In the United States, the piers of Manhattan and Brooklyn lost business to the container terminals at Newark and Elizabeth, while in Britain the port of Felixstowe, on the Suffolk coast, grew rapidly as London's docks closed."
+  },
+  {
+   "label": "F",
+   "text": "The effect on dock work was dramatic. A ship that once needed hundreds of men and several days to unload could be emptied by a handful of crane operators in a fraction of the time. Employment on the waterfront fell sharply. In many ports the dockers' unions fought the change and called strikes to slow it down, but they could not stop it. Some neighbourhoods that had grown up around the old docks lost their main source of jobs and declined."
+  },
+  {
+   "label": "G",
+   "text": "Most important of all, the cost of moving goods fell. Because boxes were loaded and unloaded so quickly, ships spent far less time in port and could make more voyages each year, and sealed containers reduced both damage and theft. Freight became so cheap that manufacturers could think about making goods thousands of kilometres from their customers. Container ships have grown steadily since 1956, and the largest today can carry more than 20,000 boxes. Few of the shoppers who buy goods made on the other side of the world ever see the steel boxes that brought them."
+  }
+ ],
+ "groups": [
+  {
+   "qtype": "True / False / Not Given",
+   "kind": "choice",
+   "instruction": "Do the following statements agree with the information given in the passage? Choose TRUE if the statement agrees with the information, FALSE if the statement contradicts the information, or NOT GIVEN if there is no information on this.",
+   "options": [
+    {
+     "key": "TRUE"
+    },
+    {
+     "key": "FALSE"
+    },
+    {
+     "key": "NOT GIVEN"
+    }
+   ],
+   "items": [
+    {
+     "text": "In the past, the equipment used to lift goods on board was normally part of the vessel itself.",
+     "answer": "TRUE",
+     "evidence": "Paragraph A: \"it was usually lifted aboard by the ship's own derricks\". Derricks belonging to the ship are equipment that is part of the vessel, so the statement agrees with the passage."
+    },
+    {
+     "text": "A cargo ship's visit to port normally lasted no more than a couple of days.",
+     "answer": "FALSE",
+     "evidence": "Paragraph B: \"It was normal for a ship to spend a week or more in port\". A normal stay of a week or more contradicts a stay of a couple of days at most."
+    },
+    {
+     "text": "Before containers, theft caused shippers more trouble than breakage did.",
+     "answer": "NOT GIVEN",
+     "evidence": "Paragraph B mentions both breakage (\"dropped, crushed or soaked\") and theft (\"an easy target for thieves\"), but never says which was the bigger problem, so the comparison is not stated."
+    },
+    {
+     "text": "McLean's original business was sea transport.",
+     "answer": "FALSE",
+     "evidence": "Paragraph C: \"an American who had built his business on lorries rather than ships\". His business was road haulage, not sea transport; he bought a shipping line only later, to test his idea."
+    },
+    {
+     "text": "The vessel used for the 1956 voyage had been built specially to carry containers.",
+     "answer": "FALSE",
+     "evidence": "Paragraph C: \"he bought a shipping line and converted an old tanker, renamed the Ideal X\". It was an old tanker that was converted, not a purpose-built ship."
+    },
+    {
+     "text": "An international organisation helped to fix the dimensions of containers.",
+     "answer": "TRUE",
+     "evidence": "Paragraph D: \"the International Organization for Standardization ... helped the industry to agree on a small set of sizes\". An international body therefore had a part in settling the sizes."
+    },
+    {
+     "text": "Building the new container terminals cost less than keeping the old piers in use.",
+     "answer": "NOT GIVEN",
+     "evidence": "Paragraph E explains why new terminals were built and that trade moved to them, but it never mentions what they cost to build or what the old piers cost to maintain."
+    }
+   ]
+  },
+  {
+   "qtype": "Sentence completion",
+   "kind": "gap",
+   "instruction": "Complete the sentences below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+   "maxWords": 2,
+   "text": "Goods that are handled one item at a time, rather than in standard containers, are called {1} cargo.\nCranes and locking pins grip a standard container by the reinforced fittings at its eight {2}.\nThe old docks that proved too small for handling containers were located in {3}.",
+   "items": [
+    {
+     "answers": [
+      "break-bulk"
+     ],
+     "evidence": "Paragraph A: \"Cargo handled in this way was known as break-bulk\". The handling described is piece by piece, so the missing word is break-bulk."
+    },
+    {
+     "answers": [
+      "corners"
+     ],
+     "evidence": "Paragraph D: \"strong steel fittings at each of its eight corners, so that cranes, lorries and locking pins could all grip it\". The fittings are at the corners."
+    },
+    {
+     "answers": [
+      "city centres",
+      "city centers"
+     ],
+     "evidence": "Paragraph E: \"The old docks in city centres ... were too cramped for this work. New terminals were therefore built on open land elsewhere\". The cramped docks were in city centres."
+    }
+   ]
+  },
+  {
+   "qtype": "Short-answer questions",
+   "kind": "gap",
+   "instruction": "Answer the questions below. Choose NO MORE THAN TWO WORDS AND/OR A NUMBER from the passage for each answer.",
+   "maxWords": 2,
+   "text": "What was the name of the ship McLean used for his 1956 voyage? {1}\nHow many containers were on board that ship? {2}\nWhich British port expanded while the capital's docks were closing? {3}",
+   "items": [
+    {
+     "answers": [
+      "Ideal X",
+      "Ideal-X"
+     ],
+     "evidence": "Paragraph C: \"converted an old tanker, renamed the Ideal X\". The 1956 voyage described in the same paragraph was made by this ship."
+    },
+    {
+     "answers": [
+      "58"
+     ],
+     "evidence": "Paragraph C: \"with 58 metal boxes on her deck\". The metal boxes are the containers carried on the first voyage."
+    },
+    {
+     "answers": [
+      "Felixstowe"
+     ],
+     "evidence": "Paragraph E: \"in Britain the port of Felixstowe, on the Suffolk coast, grew rapidly as London's docks closed\"."
+    }
+   ]
+  }
+ ]
+});
+READING.push({
+ "id": "r-claude-heat",
+ "author": "Claude",
+ "title": "Cities that make their own heat",
+ "level": 2,
+ "paragraphs": [
+  {
+   "label": "A",
+   "text": "Anyone who has cycled out of a large city on a summer evening knows the sensation: somewhere beyond the last suburbs, the air turns noticeably cooler. The difference is not imagined. In the early nineteenth century, the English amateur meteorologist Luke Howard compared temperature readings taken in London with those from the surrounding countryside and found the city consistently warmer, particularly after dark. The phenomenon is now called the urban heat island. The name comes from temperature maps, on which a built-up area appears as a warm patch surrounded by cooler land, much as an island is surrounded by sea. On a calm, clear night, the gap between a very large city and its rural surroundings can reach ten degrees Celsius or more, although a difference of a few degrees is more typical."
+  },
+  {
+   "label": "B",
+   "text": "The most obvious cause lies in the materials from which cities are made. Asphalt, concrete, brick and dark roofing absorb most of the sunlight that falls on them, whereas pale or reflective surfaces send a much larger share back into the sky. The absorbed energy does not vanish. Dense, heavy materials store it through the afternoon and give it up slowly, so that walls and roads are still warm long after the sun has set. A field of grass, by comparison, holds far less heat, and by midnight it has usually lost most of what it gained during the day."
+  },
+  {
+   "label": "C",
+   "text": "Vegetation matters as much as paving. Plants cool the air around them in two ways: their leaves cast shade, and they release water vapour drawn up from the soil. Because evaporating water absorbs energy from its surroundings, a leafy park behaves like a gentle natural air conditioner. Cities tend to disrupt both processes. Where land is sealed under pavement and buildings, rain is carried quickly into drains instead of soaking into the ground, leaving little water to evaporate on the following hot day. The energy that evaporation would have used goes instead into warming the surfaces and the air."
+  },
+  {
+   "label": "D",
+   "text": "A third contribution comes from the heat that cities produce themselves. Vehicle engines, factories, power stations, cooking and heating all release energy into the surrounding air. In summer, air conditioning adds an uncomfortable irony. A cooling unit does not destroy heat; it moves it from the inside of a building to the outside, together with the extra energy the machine itself consumes. Each office made comfortable therefore makes the street outside a little hotter, which in turn encourages still more people to switch on their own units."
+  },
+  {
+   "label": "E",
+   "text": "The shape of the city plays a part too. Narrow streets lined with tall buildings, which researchers call urban canyons, trap heat in several ways. Sunlight that strikes one wall is reflected onto the opposite wall rather than escaping upwards, so that it is eventually absorbed. After sunset, much of the warmth given off by surfaces at street level strikes the surrounding walls instead of escaping to a sky that is partly hidden by the buildings, so the street cools slowly. The walls also slow the wind that would otherwise carry warm air away. A district of tall blocks can therefore stay warm when an open field of the same size would have cooled."
+  },
+  {
+   "label": "F",
+   "text": "These effects matter most after dark and during heatwaves. In open country, air temperature usually falls steeply once the sun has gone down, giving people a chance to recover; in a city it falls much more slowly. When a heatwave brings several unusually warm nights in a row, the body has no respite, and the risk of heat-related illness climbs. Those most at risk are elderly people, very young children and people with heart or lung conditions, especially if they live in top-floor flats without any means of cooling. The heatwave that struck Europe in the summer of 2003 is estimated to have caused tens of thousands of extra deaths across the continent, and many countries have since introduced warning systems intended to protect vulnerable residents."
+  },
+  {
+   "label": "G",
+   "text": "Cities have several ways of responding. The simplest is to change what roofs are made of. Coating a roof with a pale, reflective finish, often called a cool roof, can keep its surface many degrees cooler than a dark one in full sun, which reduces both the heat passed into the building and the heat released into the air. The remedy is cheap, although dirt gradually dulls the coating, so its benefit fades unless it is renewed. A more elaborate option is the green roof, in which a layer of soil and plants is laid over the waterproofing. The plants give off water vapour, and the layer of earth slows the passage of heat into the rooms below, so the building needs less cooling."
+  },
+  {
+   "label": "H",
+   "text": "At street level, trees remain hard to beat. A line of mature trees shades pavements, walls and pedestrians directly, while also cooling the air through evaporation. Some planners are paying attention to the wind as well. Stuttgart, in Germany, lies in a valley with little natural airflow, and for decades the city has protected open corridors along which cooler air from the surrounding hills can flow towards the centre, restricting new building where it would block them. No single measure is enough on its own, and the most effective strategies combine several, but all of them share one aim: to stop the city from storing and trapping more warmth than the land it replaced."
+  }
+ ],
+ "groups": [
+  {
+   "qtype": "Matching information",
+   "kind": "choice",
+   "instruction": "The passage has eight paragraphs, A-H. Which paragraph contains the following information? Write the correct letter, A-H. NB You may use any letter more than once.",
+   "options": [
+    {
+     "key": "A"
+    },
+    {
+     "key": "B"
+    },
+    {
+     "key": "C"
+    },
+    {
+     "key": "D"
+    },
+    {
+     "key": "E"
+    },
+    {
+     "key": "F"
+    },
+    {
+     "key": "G"
+    },
+    {
+     "key": "H"
+    }
+   ],
+   "items": [
+    {
+     "text": "an example of a cooling technology that ends up raising outdoor temperatures",
+     "answer": "D",
+     "evidence": "Paragraph D: air conditioning \"moves it from the inside of a building to the outside\" so that it \"makes the street outside a little hotter\". The cooling machine worsens the outdoor heat."
+    },
+    {
+     "text": "an explanation of why the phenomenon has the label it does",
+     "answer": "A",
+     "evidence": "Paragraph A: \"The name comes from temperature maps, on which a built-up area appears as a warm patch surrounded by cooler land, much as an island is surrounded by sea.\" This explains the origin of the term."
+    },
+    {
+     "text": "identification of the groups of people who are especially vulnerable to the effects of heat",
+     "answer": "F",
+     "evidence": "Paragraph F: \"Those most at risk are elderly people, very young children and people with heart or lung conditions\". No other paragraph names vulnerable groups."
+    },
+    {
+     "text": "a contrast between how man-made materials and a natural ground cover hold on to heat",
+     "answer": "B",
+     "evidence": "Paragraph B: \"A field of grass, by comparison, holds far less heat\" than the dense materials that \"store it through the afternoon\". Only paragraph B compares built materials with a natural surface."
+    },
+    {
+     "text": "a description of how the layout of buildings stops heat from escaping",
+     "answer": "E",
+     "evidence": "Paragraph E: narrow streets lined with tall buildings \"trap heat\" because sunlight is reflected between walls and warmth strikes the walls \"instead of escaping to a sky that is partly hidden by the buildings\". The arrangement of buildings holds the warmth in."
+    }
+   ]
+  },
+  {
+   "qtype": "Matching features",
+   "kind": "choice",
+   "instruction": "Look at the following statements and the list of cooling measures below. Match each statement with the correct measure, A-D. You may use any letter more than once.",
+   "options": [
+    {
+     "key": "A",
+     "text": "pale reflective roof coatings"
+    },
+    {
+     "key": "B",
+     "text": "green roofs"
+    },
+    {
+     "key": "C",
+     "text": "street trees"
+    },
+    {
+     "key": "D",
+     "text": "protected air corridors"
+    }
+   ],
+   "items": [
+    {
+     "text": "It gives people on foot direct protection from the sun.",
+     "answer": "C",
+     "evidence": "Paragraph H: \"A line of mature trees shades pavements, walls and pedestrians directly\". Only trees are said to shelter pedestrians."
+    },
+    {
+     "text": "Its usefulness slowly declines as the surface becomes soiled.",
+     "answer": "A",
+     "evidence": "Paragraph G: \"dirt gradually dulls the coating, so its benefit fades unless it is renewed.\" This refers to the cool roof coating only."
+    },
+    {
+     "text": "It aims to bring cooler air in from outside the built-up area.",
+     "answer": "D",
+     "evidence": "Paragraph H: Stuttgart protects \"open corridors along which cooler air from the surrounding hills can flow towards the centre\". The measure works by channelling air from beyond the city."
+    },
+    {
+     "text": "A layer of earth is part of the way it protects the interior of a building.",
+     "answer": "B",
+     "evidence": "Paragraph G: \"the layer of earth slows the passage of heat into the rooms below, so the building needs less cooling.\" This describes the green roof."
+    }
+   ]
+  },
+  {
+   "qtype": "Summary completion",
+   "kind": "gap",
+   "instruction": "Complete the summary below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+   "maxWords": 2,
+   "text": "Plants lower the temperature of a city partly by providing {1} and partly by giving off water vapour. In built-up districts, rain is mostly sent into {2} instead of the soil, so little remains to evaporate. Heat is also trapped in narrow streets between tall buildings, known as {3}, where the buildings additionally weaken the {4} that would otherwise disperse the warm air.",
+   "items": [
+    {
+     "answers": [
+      "shade"
+     ],
+     "evidence": "Paragraph C: \"their leaves cast shade, and they release water vapour\". Shade is the first of the two ways plants cool the air."
+    },
+    {
+     "answers": [
+      "drains"
+     ],
+     "evidence": "Paragraph C: \"rain is carried quickly into drains instead of soaking into the ground\"."
+    },
+    {
+     "answers": [
+      "urban canyons",
+      "canyons"
+     ],
+     "evidence": "Paragraph E: \"Narrow streets lined with tall buildings, which researchers call urban canyons\"."
+    },
+    {
+     "answers": [
+      "wind",
+      "airflow",
+      "natural airflow"
+     ],
+     "evidence": "Paragraph E: \"The walls also slow the wind that would otherwise carry warm air away.\" (\"airflow\", from paragraph H, means the same and is also accepted.)"
+    }
+   ]
+  }
+ ]
+});
+READING.push({
+ "id": "r-claude-birds",
+ "author": "Claude",
+ "title": "Finding the way",
+ "level": 3,
+ "paragraphs": [
+  {
+   "label": "A",
+   "text": "Every year, billions of birds travel between their breeding grounds and their winter quarters. Some cross open ocean or empty desert, and many return to the same wood, or even the same hedge, that they left months before. For much of the twentieth century, researchers behaved as though a single mechanism lay waiting to be discovered, a master key to the whole phenomenon. That assumption now looks mistaken. The accumulated evidence points instead to a toolkit of separate senses, none of them sufficient alone, and the interesting questions concern how the tools are chosen and combined."
+  },
+  {
+   "label": "B",
+   "text": "The oldest and best-supported tool is the sun compass. Because the sun moves across the sky, a bird that steers by it must allow for the time of day, and experiments with captive starlings in the 1950s showed that they do exactly that. When mirrors were used to shift the apparent position of the sun, the birds altered their preferred heading by a matching angle, yet they continued to steer sensibly at different hours, so an internal clock must be adjusting their reading of the sun. For species that fly by day, this is a mainstay of navigation. Many small songbirds, however, travel at night, when the sun is no help at all."
+  },
+  {
+   "label": "C",
+   "text": "At night, many migrants turn to the stars. The classic work was carried out in the 1960s on indigo buntings, small North American songbirds that were hand-raised and then exposed to artificial skies in a planetarium. Birds that never saw the night sky as chicks were later unable to take a direction from the stars, whereas those that watched an artificial sky turning overhead developed a reliable sense of direction. What they had absorbed was not a chart of particular stars but the fact that the whole pattern appears to rotate about one fixed point. When the sky they were raised under rotated about a point other than the Pole Star, they adopted that point as their reference. The star compass is therefore acquired during early life, which helps to explain why young birds seem to need a clear view of the night sky while they develop."
+  },
+  {
+   "label": "D",
+   "text": "The Earth's magnetic field offers a cue that works by day and by night, and beneath cloud. Birds do not read it as a needle does. Experiments on European robins, begun in the 1960s, showed that they respond to the angle at which the field lines meet the ground, not to the field's polarity. That angle is steep near the poles and shallow near the equator, so a bird can distinguish the direction towards the pole from the direction towards the equator. The sensor itself has not been identified. One hypothesis places light-sensitive proteins called cryptochromes in the eye; another points to particles of iron-bearing mineral in the beak. Neither has been confirmed."
+  },
+  {
+   "label": "E",
+   "text": "Landmarks and smell complete the list of candidates. Coastlines, rivers and mountain ranges plainly guide birds on familiar routes, and pigeons fitted with small GPS devices have been tracked following major roads. Smell is a more surprising suggestion. Seabirds such as shearwaters, released far from their colonies, return less successfully if their sense of smell has been temporarily blocked, which suggests that they read some kind of odour landscape over the ocean. A similar idea has been proposed for homing pigeons. How far it extends beyond a handful of seabirds and pigeons is far from clear."
+  },
+  {
+   "label": "F",
+   "text": "No single cue is dependable in all circumstances. Cloud hides the sun and the stars, magnetic fields are distorted near some mineral deposits, and landmarks are absent over the sea. Birds therefore cross-check. Experiments on songbirds suggest, for instance, that the magnetic compass is periodically recalibrated against the pattern of polarised light in the twilight sky: when that pattern was artificially shifted, birds later tested in a magnetic field alone altered their headings by a matching amount. Which cue takes priority when they disagree appears to vary between species and conditions, and the published results do not yet form a consistent picture."
+  },
+  {
+   "label": "G",
+   "text": "A compass, however good, supplies only a direction. Navigation also requires a sense of position. In a famous series of ringing experiments in the 1950s, thousands of starlings migrating through the Netherlands were caught and released in Switzerland, far to the south-east. Young birds on their first migration kept flying in the same compass direction as before, and ended up well to the south of their usual winter quarters. The adults, by contrast, altered course and headed for their normal wintering area. Experienced birds must therefore have learned more than a direction. What that knowledge consists of is the largest gap in the field. Gradients in the strength and angle of the magnetic field are a favoured candidate, but a candidate is not an answer."
+  },
+  {
+   "label": "H",
+   "text": "How much of this should we believe? Popular accounts often speak of a bird's built-in satellite navigation, a phrase that suggests a single, precise and fully understood system. The evidence does not justify such confidence. The compass senses rest on repeated, controlled experiments, and I regard them as secure; the map sense and the magnetic receptor are far more tentative. Many experiments, moreover, have used captive birds in cages, whose behaviour may differ from that of birds in free flight. I expect the next significant discoveries to come from lightweight tags that follow individual birds through entire journeys, rather than from further work in the laboratory."
+  }
+ ],
+ "groups": [
+  {
+   "qtype": "Multiple choice",
+   "kind": "choice",
+   "instruction": "Choose the correct letter, A, B, C or D.",
+   "items": [
+    {
+     "text": "According to paragraph A, what was true of research into bird navigation for much of the twentieth century?",
+     "options": [
+      {
+       "key": "A",
+       "text": "It was organised around the expectation of one explanation."
+      },
+      {
+       "key": "B",
+       "text": "It was held back by the small size of the birds studied."
+      },
+      {
+       "key": "C",
+       "text": "It depended too heavily on birds kept in cages."
+      },
+      {
+       "key": "D",
+       "text": "It overlooked birds that migrate in darkness."
+      }
+     ],
+     "answer": "A",
+     "evidence": "Paragraph A: \"researchers behaved as though a single mechanism lay waiting to be discovered\". Research was framed around finding one explanation, so A is right. Reliance on captive birds is a criticism made in paragraph H of some experiments, not of the earlier research as a whole, and night migrants are discussed in B and C, not said to have been overlooked."
+    },
+    {
+     "text": "What did the planetarium experiments on young indigo buntings show?",
+     "options": [
+      {
+       "key": "A",
+       "text": "The birds memorised the position of individual stars."
+      },
+      {
+       "key": "B",
+       "text": "The birds took the point around which the sky seems to turn as their reference."
+      },
+      {
+       "key": "C",
+       "text": "The birds needed to see the real sky on the night they set off."
+      },
+      {
+       "key": "D",
+       "text": "The birds combined the stars with the magnetic field."
+      }
+     ],
+     "answer": "B",
+     "evidence": "Paragraph C: \"When the sky they were raised under rotated about a point other than the Pole Star, they adopted that point as their reference.\" The birds used the centre of rotation, so B is right; the passage says explicitly that they absorbed \"not a chart of particular stars\"."
+    },
+    {
+     "text": "What do the twilight experiments described in paragraph F suggest?",
+     "options": [
+      {
+       "key": "A",
+       "text": "Songbirds always trust the sky more than the magnetic field."
+      },
+      {
+       "key": "B",
+       "text": "A sense that is not tied to the sky can be adjusted using sky cues."
+      },
+      {
+       "key": "C",
+       "text": "Polarised light helps only birds that fly by day."
+      },
+      {
+       "key": "D",
+       "text": "Songbirds stop using the magnetic field once the sun has set."
+      }
+     ],
+     "answer": "B",
+     "evidence": "Paragraph F: \"the magnetic compass is periodically recalibrated against the pattern of polarised light in the twilight sky\". The magnetic sense is corrected using a sky cue, so B is right. Option A is contradicted by \"Which cue takes priority when they disagree appears to vary between species and conditions\"."
+    },
+    {
+     "text": "What did the starling experiments in paragraph G suggest about the adult birds?",
+     "options": [
+      {
+       "key": "A",
+       "text": "They found their way by following landmarks."
+      },
+      {
+       "key": "B",
+       "text": "They flew in a fixed compass direction like the young birds."
+      },
+      {
+       "key": "C",
+       "text": "They were able to compensate for having been taken off their route."
+      },
+      {
+       "key": "D",
+       "text": "They were less affected by the move than the young birds because they travelled faster."
+      }
+     ],
+     "answer": "C",
+     "evidence": "Paragraph G: \"The adults, by contrast, altered course and headed for their normal wintering area.\" Changing course to reach the usual area after being moved is compensating for the move, so C is right. The young birds, not the adults, kept the same direction, and landmarks and speed are not mentioned in connection with this experiment."
+    }
+   ]
+  },
+  {
+   "qtype": "Matching features",
+   "kind": "choice",
+   "instruction": "Look at the following statements and the list of navigation cues below. Match each statement with the correct cue, A-E.",
+   "options": [
+    {
+     "key": "A",
+     "text": "the sun compass"
+    },
+    {
+     "key": "B",
+     "text": "the star compass"
+    },
+    {
+     "key": "C",
+     "text": "the magnetic sense"
+    },
+    {
+     "key": "D",
+     "text": "landmarks"
+    },
+    {
+     "key": "E",
+     "text": "smell"
+    }
+   ],
+   "items": [
+    {
+     "text": "Birds that were denied any view of it when young later could not make use of it.",
+     "answer": "B",
+     "evidence": "Paragraph C: \"Birds that never saw the night sky as chicks were later unable to take a direction from the stars\". Only the star compass is described as needing early exposure."
+    },
+    {
+     "text": "Experiments in which a sense organ was temporarily put out of action lowered the birds' success at returning home.",
+     "answer": "E",
+     "evidence": "Paragraph E: seabirds \"return less successfully if their sense of smell has been temporarily blocked\". The cue is smell."
+    },
+    {
+     "text": "Using it accurately depends on the bird's own sense of time.",
+     "answer": "A",
+     "evidence": "Paragraph B: \"a bird that steers by it must allow for the time of day\" and \"an internal clock must be adjusting their reading of the sun\". Only the sun compass is said to need this time correction."
+    },
+    {
+     "text": "Birds detect how steeply its lines run, not which way they point.",
+     "answer": "C",
+     "evidence": "Paragraph D: \"they respond to the angle at which the field lines meet the ground, not to the field's polarity\". This is the magnetic sense."
+    }
+   ]
+  },
+  {
+   "qtype": "Yes / No / Not Given",
+   "kind": "choice",
+   "instruction": "Do the following statements agree with the claims of the writer in the passage? Choose YES if the statement agrees with the claims of the writer, NO if the statement contradicts the claims of the writer, or NOT GIVEN if it is impossible to say what the writer thinks about this.",
+   "options": [
+    {
+     "key": "YES"
+    },
+    {
+     "key": "NO"
+    },
+    {
+     "key": "NOT GIVEN"
+    }
+   ],
+   "items": [
+    {
+     "text": "The writer believes that researchers were wrong to expect one explanation for how birds navigate.",
+     "answer": "YES",
+     "evidence": "Paragraph A: \"That assumption now looks mistaken.\" The assumption is that \"a single mechanism\" would be found, so the writer holds that the expectation was wrong."
+    },
+    {
+     "text": "The writer regards the sun as only a minor aid to birds that migrate by day.",
+     "answer": "NO",
+     "evidence": "Paragraph B: \"For species that fly by day, this is a mainstay of navigation.\" The writer calls it a mainstay, which contradicts \"minor\"."
+    },
+    {
+     "text": "The writer says that the organ responsible for the magnetic sense is now known.",
+     "answer": "NO",
+     "evidence": "Paragraph D: \"The sensor itself has not been identified.\" This directly contradicts the statement."
+    },
+    {
+     "text": "The writer sees artificial lighting in towns as a significant cause of migrants losing their way.",
+     "answer": "NOT GIVEN",
+     "evidence": "Paragraph F lists ways in which cues fail (cloud, distorted magnetic fields, no landmarks over the sea) but the passage never mentions artificial lighting or what the writer thinks of it."
+    },
+    {
+     "text": "The writer predicts that important new findings will come from tracking wild birds on their migrations.",
+     "answer": "YES",
+     "evidence": "Paragraph H: \"I expect the next significant discoveries to come from lightweight tags that follow individual birds through entire journeys\". Tags that follow birds through whole journeys track them on migration."
+    }
+   ]
+  }
+ ]
+});
+})();
+</script>
+<script>
+// Original tutor-written IELTS Academic reading practice; not official IELTS material.
+// Fact-check references for paper (A-C): Robert C. Williams Museum of Papermaking,
+// https://paper.gatech.edu/early-papermaking
+// Papyrus (B): Metropolitan Museum of Art, https://www.metmuseum.org/essays/papyrus-making-in-egypt
+// European production (D): Vanderbilt Libraries,
+// https://exhibitions.library.vanderbilt.edu/papermaking/section/overview/
+// Hand manufacture (D-E): Library of Congress,
+// https://blogs.loc.gov/bibliomania/2024/12/05/papermaking-a-rags-to-riches-story/
+// Mechanisation (F): US Census, 1900 Manufactures, Special Reports, p. 1024,
+// https://www2.census.gov/library/publications/decennial/1900/volume-9/volume-9-p10.pdf
+// Wood pulp (G): https://paper.gatech.edu/fiber-pulp
+// Preservation (H): https://www.loc.gov/preservation/care/deterioratebrochure.html
+(function () {
+  'use strict';
+
+  READING.push({
+  "id": "r-codex-paper",
+  "author": "Codex",
+  "title": "The story of paper",
+  "level": 1,
+  "paragraphs": [
+    {
+      "label": "A",
+      "text": "A sheet of paper conceals a long history of turning unwanted material into something useful. The craft developed in China, where people had previously written on such surfaces as bamboo strips and silk. The name most often associated with its beginnings is Cai Lun, an official at the imperial court. A historical account links him with a report on papermaking presented in AD 105. However, surviving fragments show that paper existed before that date. His importance therefore lies in the recorded development of the craft, rather than in firm evidence that he produced the very first sheet."
+    },
+    {
+      "label": "B",
+      "text": "Early Chinese papermakers used several sources of plant fibre, including hemp and tree bark. Materials were treated and beaten until their fibres could be dispersed in water. Removing the water left the fibres together in a thin layer, which became a sheet as it dried. This method differed from the manufacture of Egyptian papyrus, another ancient writing surface. Papyrus makers placed strips cut from the plant in overlapping layers; they did not first separate the material into a watery mixture of loose fibres. The two products served similar purposes but were constructed in different ways."
+    },
+    {
+      "label": "C",
+      "text": "Papermaking spread eastwards to Korea and Japan as well as westwards through Central Asia. It subsequently became established in parts of the Islamic world, including Baghdad. The movement of a finished product and the movement of the knowledge needed to make it were separate processes. Merchants could carry paper to customers who had no local means of producing it. In parts of Europe, imported sheets were available before papermaking workshops were established. Owning a book or a supply of writing paper did not necessarily mean that anyone nearby knew how to manufacture its pages."
+    },
+    {
+      "label": "D",
+      "text": "By the twelfth century, paper was being manufactured in Spain, and production later expanded in Italy and elsewhere in Europe. European mills relied heavily on rags, particularly cloth made from linen and hemp; cotton rags became common only later. A worn garment could thus begin another useful life after it was no longer fit to wear. The cloth had to be collected, sorted and cleaned before it was broken down into pulp. This network of collection mattered as much as the work inside a mill: without a regular supply of suitable discarded textiles, papermakers could not keep their equipment and workers occupied."
+    },
+    {
+      "label": "E",
+      "text": "In a traditional European workshop, a worker lifted a screen through a vat containing fibres mixed with water. The liquid drained through the small openings while the fibres remained on the surface. A slight shaking movement helped distribute them evenly. The fragile sheet was then transferred onto cloth, and further sheets were added to form a stack with cloth between them. A press squeezed water out of this stack before the sheets were separated and hung up to dry. Making each sheet involved several stages, with care needed whenever the material was still wet."
+    },
+    {
+      "label": "F",
+      "text": "The spread of printing in Europe increased the importance of producing paper in quantity. A printer could reproduce a text many times, but every additional copy still required a physical supply of paper. Around the beginning of the nineteenth century, machines began to replace the separate formation of sheets with continuous production. The unbroken product is known in the industry as a web, which could later be cut to the required size. Mechanisation increased output, yet it did not by itself create more raw material. Faster equipment made a dependable source of fibre increasingly important to the industry."
+    },
+    {
+      "label": "G",
+      "text": "During the nineteenth century, wood became a major alternative to rags. It could be obtained in much greater quantities than discarded clothing. Producers developed both mechanical and chemical ways of extracting useful fibres from it. Mechanical processing grinds the material apart, whereas chemical processing uses reactions to separate its components. These approaches produce pulps with different properties and suit different purposes. The change was therefore more than a simple exchange of one ingredient for another: manufacturers had to connect their choice of raw material with their method of processing and the paper they intended to sell."
+    },
+    {
+      "label": "H",
+      "text": "The new source also brought challenges for preservation. Mechanical pulping leaves much of the wood's lignin, a natural binding substance, in the pulp. Lignin contributes to the deterioration of paper and is the main reason an old newspaper turns yellow, while acids in the paper make it fragile. Chemical pulping removes much of the lignin, and paper intended for long use can be made from purified wood pulp under suitable manufacturing conditions. Age alone consequently tells little about a book's condition. Its materials matter, as do the conditions in which it is kept: controlling temperature and humidity helps libraries protect both recent and centuries-old collections."
+    }
+  ],
+  "groups": [
+    {
+      "qtype": "True / False / Not Given",
+      "kind": "choice",
+      "instruction": "Do the following statements agree with the information given in the passage? Choose TRUE if the statement agrees with the information, FALSE if the statement contradicts the information, or NOT GIVEN if there is no information on this.",
+      "options": [
+        {
+          "key": "TRUE"
+        },
+        {
+          "key": "FALSE"
+        },
+        {
+          "key": "NOT GIVEN"
+        }
+      ],
+      "items": [
+        {
+          "text": "Physical evidence indicates that papermaking predates the contribution associated with Cai Lun.",
+          "answer": "TRUE",
+          "evidence": "Paragraph A: \"surviving fragments show that paper existed before that date\". These remains establish that paper was made before the contribution recorded in AD 105."
+        },
+        {
+          "text": "Cai Lun was taught how to make paper by a relative.",
+          "answer": "NOT GIVEN",
+          "evidence": "Paragraph A: \"A historical account links him with a report on papermaking presented in AD 105.\" The passage describes his recorded contribution but never states who taught him the craft."
+        },
+        {
+          "text": "The manufacture of papyrus required the plant to be reduced to individual fibres in liquid.",
+          "answer": "FALSE",
+          "evidence": "Paragraph B: \"they did not first separate the material into a watery mixture of loose fibres\". Papyrus was assembled from strips instead of being reduced to loose fibres in water."
+        },
+        {
+          "text": "The technique of making paper travelled from China in more than one geographical direction.",
+          "answer": "TRUE",
+          "evidence": "Paragraph C: \"Papermaking spread eastwards to Korea and Japan as well as westwards through Central Asia.\" The craft moved both east and west from China."
+        },
+        {
+          "text": "Europeans could obtain paper only after it began to be made in their own region.",
+          "answer": "FALSE",
+          "evidence": "Paragraph C: \"In parts of Europe, imported sheets were available before papermaking workshops were established.\" Imports gave some Europeans access to paper before local production began."
+        },
+        {
+          "text": "The earliest paper producers in Spain were given financial support by local rulers.",
+          "answer": "NOT GIVEN",
+          "evidence": "Paragraph D: \"By the twelfth century, paper was being manufactured in Spain\". The passage mentions production in Spain but never states how its first producers were funded."
+        }
+      ]
+    },
+    {
+      "qtype": "Note completion",
+      "kind": "gap",
+      "instruction": "Complete the notes below. Choose ONE WORD ONLY from the passage for each answer.",
+      "maxWords": 1,
+      "text": "Materials and methods in European papermaking\nWaste cloth: rags made of {1} came into wide use later than those of linen and hemp.\nSheet formation: a {2} retained the fibres as liquid passed through its holes.\nWater removal: the stack was compressed using a {3}.\nMechanisation: the industry calls the uncut output of the new machines a {4}.\nNineteenth-century supply: {5} offered more raw material than unwanted garments.\nPreservation: pulp made by grinding wood keeps much of a substance called {6}, the main cause of old paper turning yellow.\nStorage: as well as how warm a collection is kept, libraries control its {7}.",
+      "items": [
+        {
+          "answers": [
+            "cotton"
+          ],
+          "evidence": "Paragraph D: \"particularly cloth made from linen and hemp; cotton rags became common only later\". Cotton is the textile that arrived after linen and hemp. (Claude changed this sentence and gap on 19 November after a fact review: early European paper was made mainly from linen and hemp, not cotton.)"
+        },
+        {
+          "answers": [
+            "screen"
+          ],
+          "evidence": "Paragraph E: \"a worker lifted a screen through a vat\" and \"The liquid drained through the small openings while the fibres remained on the surface.\" The screen held the fibres while allowing the liquid to pass through."
+        },
+        {
+          "answers": [
+            "press"
+          ],
+          "evidence": "Paragraph E: \"A press squeezed water out of this stack\". The press compressed the stacked sheets to remove water."
+        },
+        {
+          "answers": [
+            "web"
+          ],
+          "evidence": "Paragraph F: \"The unbroken product is known in the industry as a web, which could later be cut to the required size.\" Web is the industry term for the machine's uncut output."
+        },
+        {
+          "answers": [
+            "wood"
+          ],
+          "evidence": "Paragraph G: \"wood became a major alternative to rags\" and \"It could be obtained in much greater quantities than discarded clothing.\" Wood increased the available supply beyond that obtainable from old garments."
+        },
+        {
+          "answers": [
+            "lignin"
+          ],
+          "evidence": "Paragraph H: \"Mechanical pulping leaves much of the wood's lignin, a natural binding substance, in the pulp. Lignin contributes to the deterioration of paper and is the main reason an old newspaper turns yellow\". Mechanical pulping is the grinding method (paragraph G), and lignin is the substance it leaves behind."
+        },
+        {
+          "answers": [
+            "humidity"
+          ],
+          "evidence": "Paragraph H: \"controlling temperature and humidity helps libraries protect both recent and centuries-old collections\". Humidity is the second storage condition regulated alongside temperature."
+        }
+      ]
+    }
+  ]
+});
+
+  // Memory research: curve and savings, https://pmc.ncbi.nlm.nih.gov/articles/PMC4492928/
+  // Spacing, https://escholarship.org/uc/item/0kp5q19x
+  // Retrieval, https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.2006.01693.x/
+  // Sleep, https://pmc.ncbi.nlm.nih.gov/articles/PMC12332499/
+  // Sleep reactivation, https://pmc.ncbi.nlm.nih.gov/articles/PMC4402655/
+  READING.push({
+  "id": "r-codex-forgetting",
+  "author": "Codex",
+  "title": "Why we forget",
+  "level": 2,
+  "paragraphs": [
+    {
+      "label": "A",
+      "text": "Forgetting is often imagined as the gradual emptying of a container: leave a memory alone, and a little more of it disappears each day. Research does not support such a simple, steady decline. When newly learned material is followed over time, the loss is often steep at first and then becomes slower. This pattern is commonly represented by a forgetting curve. Its shape matters because it suggests that the same additional delay can have different effects at different points after learning. Yet a curve is a description of performance under particular conditions, not a timetable predicting the fate of every fact a person encounters."
+    },
+    {
+      "label": "B",
+      "text": "In the nineteenth century, the German psychologist Hermann Ebbinghaus sought to measure this change systematically. He learned lists of syllables designed to carry little meaning, reducing the contribution of existing knowledge. Later, he learned the same lists again and compared the work required on the two occasions. The reduction in effort was called savings. This method could reveal a surviving effect of earlier learning even when he could not consciously reproduce a list. His achievement was therefore more than a familiar graph: he showed that memory could be investigated through a measurable advantage in relearning, rather than judged solely by whether an answer came immediately to mind."
+    },
+    {
+      "label": "C",
+      "text": "The passage of time, however, does not identify the cause of forgetting. Other experiences occur while time passes, and these can compete with what was learned. This competition is known as interference. An old access code may intrude when someone tries to remember its replacement; conversely, repeated use of the replacement may make the original harder to produce. Neither example requires every trace of the less accessible code to have vanished. Similarity between competing material can increase the problem. From this perspective, failure is partly a difficulty in selecting the appropriate response among rivals, rather than proof that the brain has simply run out of room."
+    },
+    {
+      "label": "D",
+      "text": "Sleep adds another complication to the picture because a period without deliberate study need not be a period without useful mental activity. Newly formed memories undergo consolidation, a set of processes through which they become more stable. Sleep can support these processes. Experiments comparing retention after sleep and wakefulness have found benefits for various kinds of material, although results depend on the task and conditions. Researchers also investigate how patterns of brain activity associated with learning are reactivated during sleep. Sleep is therefore more than an empty stretch on a revision calendar. This does not mean that a night in bed can create knowledge that was never learned."
+    },
+    {
+      "label": "E",
+      "text": "For learners, one particularly robust finding concerns the distribution of repeated encounters with material. Spaced practice places intervals between these encounters, while massed practice brings them together in one concentrated period. When the amount of practice is comparable, spacing often produces better retention after a substantial delay. A learner who returns to a topic on separate occasions may therefore remember more later than one who completes the repetitions in a single sitting. This advantage does not depend on spending every intervening moment thinking about the topic. Indeed, the pause between encounters is an essential feature of the method, rather than wasted time that should automatically be removed."
+    },
+    {
+      "label": "F",
+      "text": "What happens at the next encounter also matters. Retrieval practice means trying to generate previously learned information without looking at the source. A student might close a textbook and explain an idea, then reopen it to check the attempt. Such effort can strengthen later remembering; it is not merely a way to measure what is already secure. Comparing the attempt with the source supplies feedback, which allows errors and omissions to be corrected. The distinction between effort and success is important. Struggling to produce an answer can be useful, but difficulty alone is no guarantee of learning, especially if a mistaken response is never corrected."
+    },
+    {
+      "label": "G",
+      "text": "There is no single ideal spacing schedule for every purpose. The delay between study sessions should reflect how long the material needs to remain available. Research generally finds that longer intended retention favours longer separation between encounters, within limits. Extending the separation indefinitely is not beneficial: if too much becomes inaccessible, the next encounter can involve substantial relearning. A schedule for remembering information next week may consequently differ from one intended to support its use months later. This relationship makes a fixed calendar less informative than it first appears. A practical plan needs to consider the date of future use, rather than treat a particular sequence of dates as universally effective."
+    },
+    {
+      "label": "H",
+      "text": "These findings also challenge the way learners judge their own progress. Reading the same explanation repeatedly can make it feel familiar, and this ease can be mistaken for an ability to produce the explanation independently. Confidence during study is therefore an unreliable substitute for later performance. A more revealing check is to put the material away, allow some time to pass and then attempt a clear account of it. Forgetting discovered in this way provides useful information about what needs further attention. The aim is not to make every study session feel effortless, but to build knowledge that remains available when the page is no longer in front of the learner."
+    }
+  ],
+  "groups": [
+    {
+      "qtype": "Matching headings",
+      "kind": "choice",
+      "instruction": "Choose the correct heading for paragraphs A-F from the list of headings below. Choose a different heading for each paragraph.",
+      "options": [
+        {
+          "key": "i",
+          "text": "When memories obstruct one another"
+        },
+        {
+          "key": "ii",
+          "text": "Choosing items with few existing associations"
+        },
+        {
+          "key": "iii",
+          "text": "Different rates of loss at different times"
+        },
+        {
+          "key": "iv",
+          "text": "Creating durable learning by separating repetitions"
+        },
+        {
+          "key": "v",
+          "text": "Finding evidence of learning beyond conscious recall"
+        },
+        {
+          "key": "vi",
+          "text": "Two directions of confusion over an access code"
+        },
+        {
+          "key": "vii",
+          "text": "Productive mental activity during rest"
+        },
+        {
+          "key": "viii",
+          "text": "Strengthening knowledge by trying to produce it"
+        }
+      ],
+      "items": [
+        {
+          "text": "Paragraph A",
+          "answer": "iii",
+          "evidence": "Paragraph A: \"the loss is often steep at first and then becomes slower\". The paragraph explains that the rate of forgetting changes over time."
+        },
+        {
+          "text": "Paragraph B",
+          "answer": "v",
+          "evidence": "Paragraph B: \"This method could reveal a surviving effect of earlier learning even when he could not consciously reproduce a list.\" The main point is that an advantage in relearning can reveal memory that conscious recall does not."
+        },
+        {
+          "text": "Paragraph C",
+          "answer": "i",
+          "evidence": "Paragraph C: \"Other experiences occur while time passes, and these can compete with what was learned.\" The paragraph explains how competing memories can obstruct access to the information required."
+        },
+        {
+          "text": "Paragraph D",
+          "answer": "vii",
+          "evidence": "Paragraph D: \"a period without deliberate study need not be a period without useful mental activity\". The paragraph explains how processes occurring during sleep can support memory."
+        },
+        {
+          "text": "Paragraph E",
+          "answer": "iv",
+          "evidence": "Paragraph E: \"When the amount of practice is comparable, spacing often produces better retention after a substantial delay.\" The paragraph's main concern is how separating repetitions can improve later remembering."
+        },
+        {
+          "text": "Paragraph F",
+          "answer": "viii",
+          "evidence": "Paragraph F: \"Such effort can strengthen later remembering; it is not merely a way to measure what is already secure.\" The paragraph explains that attempting to produce information can improve memory as well as assess it."
+        }
+      ]
+    },
+    {
+      "qtype": "Summary completion",
+      "kind": "gap",
+      "instruction": "Complete the summary below. Choose ONE WORD ONLY from the passage for each answer.",
+      "maxWords": 1,
+      "text": "The name for the stabilisation of recently formed memories is {1}, which sleep can support. When repeated study is spread out, the {2} between separate sessions are a deliberate feature. Learners can also use {3} practice, trying to produce an account with the reference material hidden. Afterwards, comparison with the original allows them to correct inaccuracies and address {4}, meaning parts they failed to include.",
+      "items": [
+        {
+          "answers": [
+            "consolidation"
+          ],
+          "evidence": "Paragraph D: \"Newly formed memories undergo consolidation, a set of processes through which they become more stable.\" Consolidation is the name given to the stabilisation of new memories."
+        },
+        {
+          "answers": [
+            "intervals"
+          ],
+          "evidence": "Paragraph E: \"Spaced practice places intervals between these encounters\". The periods separating repeated encounters are called intervals."
+        },
+        {
+          "answers": [
+            "retrieval"
+          ],
+          "evidence": "Paragraph F: \"Retrieval practice means trying to generate previously learned information without looking at the source.\" Retrieval identifies the type of practice involving attempts to produce information without consulting its source."
+        },
+        {
+          "answers": [
+            "omissions"
+          ],
+          "evidence": "Paragraph F: \"Comparing the attempt with the source supplies feedback, which allows errors and omissions to be corrected.\" Omissions are the required parts missing from the learner's response."
+        }
+      ]
+    },
+    {
+      "qtype": "Multiple choice",
+      "kind": "choice",
+      "instruction": "Choose the correct letter, A, B, C or D.",
+      "items": [
+        {
+          "text": "According to paragraph G, which consideration should guide the separation of study sessions?",
+          "options": [
+            {
+              "key": "A",
+              "text": "How familiar the explanation feels while it is being read"
+            },
+            {
+              "key": "B",
+              "text": "How strongly the material resembles other information"
+            },
+            {
+              "key": "C",
+              "text": "How far into the future the knowledge will be needed"
+            },
+            {
+              "key": "D",
+              "text": "How much effort was saved when a list was learned again"
+            }
+          ],
+          "answer": "C",
+          "evidence": "Paragraph G: \"The delay between study sessions should reflect how long the material needs to remain available.\" The intended period of future usefulness should influence the spacing chosen."
+        },
+        {
+          "text": "What drawback of an excessively long separation is identified in paragraph G?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Much of the content may have to be acquired again."
+            },
+            {
+              "key": "B",
+              "text": "Competing items may be difficult to distinguish."
+            },
+            {
+              "key": "C",
+              "text": "Repeated reading may produce a misleading sense of familiarity."
+            },
+            {
+              "key": "D",
+              "text": "Existing knowledge may influence the learning of syllables."
+            }
+          ],
+          "answer": "A",
+          "evidence": "Paragraph G: \"if too much becomes inaccessible, the next encounter can involve substantial relearning\". Excessive separation can make it necessary to learn a considerable amount of the content again."
+        },
+        {
+          "text": "Why does the writer recommend giving an explanation after setting the material aside for a while?",
+          "options": [
+            {
+              "key": "A",
+              "text": "It helps the learner select material with little prior meaning."
+            },
+            {
+              "key": "B",
+              "text": "It allows competing access codes to be compared directly."
+            },
+            {
+              "key": "C",
+              "text": "It concentrates repeated encounters into a single period."
+            },
+            {
+              "key": "D",
+              "text": "It gives a clearer indication of what the learner can produce unaided."
+            }
+          ],
+          "answer": "D",
+          "evidence": "Paragraph H: \"Confidence during study is therefore an unreliable substitute for later performance. A more revealing check is to put the material away, allow some time to pass and then attempt a clear account of it.\" A delayed explanation tests independent remembering more directly than confidence during reading."
+        }
+      ]
+    }
+  ]
+});
+
+  // Walking and integration: https://www.who.int/health-topics/physical-activity/promoting-walking-and-cycling
+  // Inclusive routes: https://www.gov.uk/government/publications/inclusive-mobility-making-transport-accessible-for-passengers-and-pedestrians
+  // Context-dependent retail effects: OECD, Local Retail, Global Trends,
+  // https://www.oecd.org/en/publications/local-retail-global-trends_55e2edec-en/full-report/harnessing-the-twin-transition-to-revitalise-retail-smes-in-town-and-city-centres_216a0acf.html
+  READING.push({
+  "id": "r-codex-walkable",
+  "author": "Codex",
+  "title": "Who benefits from the walkable city?",
+  "level": 3,
+  "paragraphs": [
+    {
+      "label": "A",
+      "text": "Talk of a walkable city often produces an attractive image: trees, outdoor tables and a street without cars. Yet an image is a poor test of a transport policy. In my view, the decisive question is whether residents can reach the places they need without making journeys that are unsafe or unnecessarily difficult. A handsome square surrounded by hostile roads may fail this test, while an ordinary street linking homes to a school may pass it. Nor does success require every vehicle to disappear. Walking deserves a stronger position in urban planning because it can widen people's practical choices, not because one form of movement is morally superior to another."
+    },
+    {
+      "label": "B",
+      "text": "The arrangement of destinations matters as much as the appearance of the route. When housing, shops and services occupy distant, separate districts, resurfacing a pavement cannot bring them closer together. Conversely, a shop nearby on a map may require a long detour if a railway or major road blocks the direct approach. Planning must therefore address both proximity and connections. Trees and benches can make a route more pleasant, but they cannot compensate fully for a street network that forces people far out of their way. The appropriate ambition is not to fill every neighbourhood with every possible activity; it is to make everyday needs reasonably accessible."
+    },
+    {
+      "label": "C",
+      "text": "That ambition becomes more demanding when the imagined pedestrian is no longer a healthy adult moving at a steady pace. Some people need frequent rests; others use wheelchairs or have difficulty seeing. A crossing that is convenient for one person may give another too little time to cross. Smooth surfaces, usable crossing signals and places to sit are therefore elements of access, rather than decorative extras. I would judge a walking scheme partly by the independence it gives people whose needs are easiest to overlook. At the same time, access by adapted vehicles and taxis must remain possible where people need it. A pedestrian policy that ignores these journeys misunderstands its own purpose."
+    },
+    {
+      "label": "D",
+      "text": "Space is limited, however, and giving more of it to pedestrians involves choices. Widening a pavement may remove parking; construction can interrupt trade; maintaining surfaces and planting requires continuing expenditure. Shopkeepers' concerns about customers and deliveries deserve a detailed response. Their objections can expose weaknesses in a proposal and should be treated as useful information, rather than simply resistance to progress. A delivery arrangement that works for a cafe may be unsuitable for a furniture shop. Supporters also weaken their case when they promise that every business will earn more. A more agreeable shopping street is a plausible benefit, but it is no guarantee of higher income for each trader."
+    },
+    {
+      "label": "E",
+      "text": "The effect on surrounding streets demands equal care. Closing one route to through traffic does not tell us, by itself, where drivers will go next. Some may choose another road, change their destination or use another means of travel. The balance will depend on local circumstances. This uncertainty is a reason to investigate, not a reason to reject change automatically. Temporary arrangements can reveal problems before expensive construction begins. However, I would oppose a trial designed merely to confirm a decision already taken. Its criteria for success should be announced in advance, and its assessment should include neighbouring streets. An improvement inside a boundary is inadequate evidence if the burdens immediately outside it are ignored."
+    },
+    {
+      "label": "F",
+      "text": "There is also a social objection that a purely transport discussion can miss. If a neighbourhood becomes more desirable, housing demand may increase; where rents rise, some residents may struggle to remain. It would be misleading to claim that better pavements alone determine property prices, which have many influences. Equally, a scheme cannot be called socially successful merely because new residents enjoy it. The relevant question is whether existing residents can continue to share its advantages. This is an argument for linking improvements to housing policy. It is not a convincing argument for keeping neighbourhoods unpleasant, as though poor conditions were an acceptable substitute for protecting people's ability to live there."
+    },
+    {
+      "label": "G",
+      "text": "Advocates must also resist making walking carry the whole transport system. Walking can contribute to regular physical activity, but a person's health is not determined by a street layout alone. Likewise, better local routes will not remove the need for longer journeys across a large city. Reliable public transport is a necessary partner: a comfortable approach to a bus stop has limited value if the service rarely arrives. Different forms of travel should be planned together, with attention to the complete journey. The aim is to reduce avoidable dependence on private cars while preserving workable alternatives for trips that cannot reasonably be made on foot."
+    },
+    {
+      "label": "H",
+      "text": "Finally, the evidence used to judge a scheme should match these ambitions. A busy pavement on a sunny opening day demonstrates little about ordinary access in winter or after dark. Repeated observations should be combined with accounts from users, including people who still find the area difficult to navigate. Numbers alone cannot explain why someone avoids a route, while enthusiastic comments cannot establish how widely the benefits are shared. The strongest case for the walkable city is therefore conditional: it can make daily life more accessible when its design recognises unequal abilities, its costs are acknowledged and its consequences are tested honestly. This is a demanding standard, but a more useful one than a flattering photograph."
+    }
+  ],
+  "groups": [
+    {
+      "qtype": "Yes / No / Not Given",
+      "kind": "choice",
+      "instruction": "Do the following statements agree with the views of the writer? Choose YES if the statement agrees with the writer's views, NO if the statement contradicts the writer's views, or NOT GIVEN if it is impossible to say what the writer thinks about this.",
+      "options": [
+        {
+          "key": "YES"
+        },
+        {
+          "key": "NO"
+        },
+        {
+          "key": "NOT GIVEN"
+        }
+      ],
+      "items": [
+        {
+          "text": "The value of a walking scheme should be judged by how easily people can reach necessary destinations.",
+          "answer": "YES",
+          "evidence": "Paragraph A: \"the decisive question is whether residents can reach the places they need without making journeys that are unsafe or unnecessarily difficult\". The writer makes practical access to necessary places the main test of a scheme."
+        },
+        {
+          "text": "Making a route more comfortable can fully overcome the problem of an indirect street layout.",
+          "answer": "NO",
+          "evidence": "Paragraph B: \"Trees and benches can make a route more pleasant, but they cannot compensate fully for a street network that forces people far out of their way.\" The writer explicitly rejects the claim that added comfort can fully make up for an inconvenient route."
+        },
+        {
+          "text": "The writer believes road-crossing equipment should receive more funding than places for pedestrians to rest.",
+          "answer": "NOT GIVEN",
+          "evidence": "Paragraph C: \"Smooth surfaces, usable crossing signals and places to sit are therefore elements of access, rather than decorative extras.\" The writer regards both crossing facilities and seating as important but never compares how much money should be allocated to them."
+        },
+        {
+          "text": "Criticism from local traders can help planners identify faults in a walking proposal.",
+          "answer": "YES",
+          "evidence": "Paragraph D: \"Their objections can expose weaknesses in a proposal and should be treated as useful information\". The writer considers traders' criticism a source of information that can reveal problems."
+        },
+        {
+          "text": "Uncertainty about drivers' responses is sufficient grounds for dismissing a proposed street change.",
+          "answer": "NO",
+          "evidence": "Paragraph E: \"This uncertainty is a reason to investigate, not a reason to reject change automatically.\" The writer directly opposes rejecting a proposal simply because its traffic effects are uncertain."
+        }
+      ]
+    },
+    {
+      "qtype": "Multiple choice",
+      "kind": "choice",
+      "instruction": "Choose the correct letter, A, B, C or D.",
+      "items": [
+        {
+          "text": "Why does the writer mention a shop that appears close to housing on a map?",
+          "options": [
+            {
+              "key": "A",
+              "text": "To support placing every type of urban activity in each residential district."
+            },
+            {
+              "key": "B",
+              "text": "To explain why a more attractive route can persuade people to travel further."
+            },
+            {
+              "key": "C",
+              "text": "To distinguish geographical closeness from ease of reaching a destination."
+            },
+            {
+              "key": "D",
+              "text": "To demonstrate the cost of providing places to rest along shopping routes."
+            }
+          ],
+          "answer": "C",
+          "evidence": "Paragraph B: \"a shop nearby on a map may require a long detour if a railway or major road blocks the direct approach\". The example shows that a short direct distance does not necessarily mean a convenient journey."
+        },
+        {
+          "text": "What response to commercial concerns is most consistent with paragraph D?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Make visual improvements the main answer to worries about deliveries."
+            },
+            {
+              "key": "B",
+              "text": "Adapt arrangements for receiving goods to the requirements of different businesses."
+            },
+            {
+              "key": "C",
+              "text": "Use the income of each individual trader as the sole measure of success."
+            },
+            {
+              "key": "D",
+              "text": "Reserve continuing funds for the upkeep of paving and planted areas."
+            }
+          ],
+          "answer": "B",
+          "evidence": "Paragraph D: \"A delivery arrangement that works for a cafe may be unsuitable for a furniture shop.\" The writer's comparison supports planning delivery access around the differing needs of businesses."
+        },
+        {
+          "text": "According to paragraph F, why should transport improvements be connected with housing policy?",
+          "options": [
+            {
+              "key": "A",
+              "text": "To stop neighbourhood improvements from affecting demand for homes in any way."
+            },
+            {
+              "key": "B",
+              "text": "To preserve poor street conditions as a means of keeping rents affordable."
+            },
+            {
+              "key": "C",
+              "text": "To help people already living in an area retain access to the benefits."
+            },
+            {
+              "key": "D",
+              "text": "To assess improvements chiefly through the preferences of recent arrivals."
+            }
+          ],
+          "answer": "C",
+          "evidence": "Paragraph F: \"The relevant question is whether existing residents can continue to share its advantages. This is an argument for linking improvements to housing policy.\" The proposed connection is intended to keep the benefits available to current residents."
+        },
+        {
+          "text": "Which approach to assessment does the writer favour in paragraph H?",
+          "options": [
+            {
+              "key": "A",
+              "text": "Using attendance at the launch to estimate the scheme's lasting value."
+            },
+            {
+              "key": "B",
+              "text": "Giving favourable personal reports greater weight than repeated observations."
+            },
+            {
+              "key": "C",
+              "text": "Restricting comparisons to periods with similar weather and daylight."
+            },
+            {
+              "key": "D",
+              "text": "Combining records of use with people's explanations of remaining difficulties."
+            }
+          ],
+          "answer": "D",
+          "evidence": "Paragraph H: \"Repeated observations should be combined with accounts from users, including people who still find the area difficult to navigate.\" The writer recommends combining observed use with experiences that reveal continuing barriers."
+        }
+      ]
+    },
+    {
+      "qtype": "Matching sentence endings",
+      "kind": "choice",
+      "instruction": "Complete each sentence with the correct ending, A-F. There are more endings than sentences.",
+      "options": [
+        {
+          "key": "A",
+          "text": "can uncover difficulties before major investment is committed."
+        },
+        {
+          "key": "B",
+          "text": "keeps essential journeys by taxi or adapted car possible."
+        },
+        {
+          "key": "C",
+          "text": "reveals little about access in less favourable conditions."
+        },
+        {
+          "key": "D",
+          "text": "offers restricted benefits when the transport service is infrequent."
+        },
+        {
+          "key": "E",
+          "text": "ensures that every nearby retailer receives a financial advantage."
+        },
+        {
+          "key": "F",
+          "text": "removes the need to consider destinations beyond the local area."
+        }
+      ],
+      "items": [
+        {
+          "text": "Allowing some motor traffic within a pedestrian scheme",
+          "answer": "B",
+          "evidence": "Paragraph C: \"access by adapted vehicles and taxis must remain possible where people need it\". Retaining access for some motor vehicles preserves journeys needed by people who cannot make them on foot."
+        },
+        {
+          "text": "Introducing a street arrangement for a limited period",
+          "answer": "A",
+          "evidence": "Paragraph E: \"Temporary arrangements can reveal problems before expensive construction begins.\" A trial can identify difficulties before money is committed to permanent construction."
+        },
+        {
+          "text": "Making the pedestrian approach to a public transport stop more comfortable",
+          "answer": "D",
+          "evidence": "Paragraph G: \"a comfortable approach to a bus stop has limited value if the service rarely arrives\". Easier access to a stop offers only limited benefit when buses run infrequently."
+        },
+        {
+          "text": "Counting the people on a street on the day a scheme opens",
+          "answer": "C",
+          "evidence": "Paragraph H: \"A busy pavement on a sunny opening day demonstrates little about ordinary access in winter or after dark.\" A count made at the launch says little about how the scheme serves people in harder conditions. (Claude replaced Codex's original third sentence here on 19 November, because it tested the same sentence of paragraph F as question 8.)"
+        }
+      ]
+    }
+  ]
+});
+})();
+</script>
+<script>
+(function () {
+'use strict';
+var app = document.getElementById('app');
+var TEST_DAY = new Date(2027, 0, 10);
+var KEY = 'ielts-practice-v1';
+var CAUSES = [['LOC', 'could not find the place'], ['PAR', 'missed the paraphrase'], ['NG', 'True / False / Not Given confusion'],
+  ['HEAD', 'chose a detail as a heading'], ['TIME', 'ran out of time'], ['COPY', 'spelling or word limit'], ['VOC', 'did not know the word']];
+
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function byId(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
+function mmss(sec) { sec = Math.max(0, Math.round(sec)); var m = Math.floor(sec / 60), s = sec % 60; return m + ':' + (s < 10 ? '0' : '') + s; }
+function today() { var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+function num(id) { return +id.slice(-2); }
+
+// ---- saved state. Storage can be missing or blocked; the page must still work for one sitting without it.
+var storageOk = true;
+var store = (function () {
+  try { var s = JSON.parse(localStorage.getItem(KEY)); if (s && s.v === 1 && Array.isArray(s.attempts)) return s; } catch (e) { storageOk = false; }
+  return { v: 1, attempts: [], draft: null };
+})();
+function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); storageOk = true; } catch (e) { storageOk = false; } return storageOk; }
+
+var S = store.draft && (store.draft.mode === 'writing' ? byId(WRITING, store.draft.id) : byId(READING, store.draft.id)) ? store.draft : null;  // the attempt in progress
+// An untimed attempt does not count the time the page was closed. A timed one does: the test clock never stops.
+if (S && !S.limitMin && S.savedAt) S.startedAt += Date.now() - S.savedAt;
+var showing = null;      // index of the attempt whose result is on screen
+var saveTimer = 0;
+function saveDraft() {
+  if (!S) return;
+  S.savedAt = Date.now(); store.draft = S;
+  var ok = save(), w = document.getElementById('nosave');
+  if (w) w.hidden = ok;
+}
+function persistSoon() { clearTimeout(saveTimer); saveTimer = setTimeout(saveDraft, 400); }
+// A finished attempt keeps its own copy of the prompt or passage, so later edits to the banks cannot change an old result.
+function itemOf(a) { return a.item || (a.type === 'writing' ? byId(WRITING, a.id) : byId(READING, a.id)); }
+
+function lastAttempt(type, id) { for (var i = store.attempts.length - 1; i >= 0; i--) if (store.attempts[i].type === type && store.attempts[i].id === id) return store.attempts[i]; return null; }
+
+// ---------------------------------------------------------------- figures
+function plotFrame(v, n, inner) {
+  var W = 560, H = 290, L = 48, R = 14, T = 12, B = 32, pw = W - L - R, ph = H - T - B;
+  var Y = function (val) { return T + ph - ph * val / v.yMax; };
+  var s = '<div class="tablewrap"><svg class="plot wide" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(v.unit) + '">';
+  for (var t = 0; t <= v.yMax + 1e-9; t += v.yStep)
+    s += '<line class="' + (t === 0 ? 'axis' : 'grid') + '" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(t) + '" y2="' + Y(t) + '"/><text x="' + (L - 8) + '" y="' + (Y(t) + 4) + '" text-anchor="end">' + t + esc(v.suffix || '') + '</text>';
+  return s + inner({ W: W, H: H, L: L, R: R, T: T, B: B, pw: pw, ph: ph, Y: Y }) + '</svg></div>';
+}
+function legend(names, line) {
+  if (names.length < 2) return '';
+  return '<div class="legend">' + names.map(function (n, i) { return '<span><i class="c' + (i + 1) + (line ? ' ln' : '') + '"></i>' + esc(n) + '</span>'; }).join('') + '</div>';
+}
+function lineChart(v) {
+  var n = v.x.length;
+  return legend(v.series.map(function (s) { return s.name; }), true) + plotFrame(v, n, function (f) {
+    var X = function (i) { return f.L + 28 + (f.pw - 56) * (n === 1 ? .5 : i / (n - 1)); };
+    var out = v.x.map(function (lab, i) { return '<text x="' + X(i) + '" y="' + (f.H - 10) + '" text-anchor="middle">' + esc(lab) + '</text>'; }).join('');
+    v.series.forEach(function (s, k) {
+      out += '<g class="c' + (k + 1) + '"><polyline class="ln" points="' + s.values.map(function (val, i) { return X(i) + ',' + f.Y(val); }).join(' ') + '"/>' +
+        s.values.map(function (val, i) { return '<circle class="dot" r="4.5" cx="' + X(i) + '" cy="' + f.Y(val) + '"/>'; }).join('') + '</g>';
+    });
+    return out;
+  });
+}
+function barChart(v) {
+  var m = v.categories.length, k = v.series.length;
+  return legend(v.series.map(function (s) { return s.name; })) + plotFrame(v, m, function (f) {
+    var band = f.pw / m, bw = Math.min(24, (band * .7 - 2 * (k - 1)) / k), group = k * bw + 2 * (k - 1), y0 = f.Y(0), out = '';
+    v.categories.forEach(function (cat, i) {
+      var x0 = f.L + band * i + (band - group) / 2;
+      out += '<text x="' + (f.L + band * (i + .5)) + '" y="' + (f.H - 10) + '" text-anchor="middle">' + esc(cat) + '</text>';
+      v.series.forEach(function (s, j) {
+        var x = x0 + j * (bw + 2), y = f.Y(s.values[i]), r = Math.min(4, (y0 - y) / 2);
+        out += '<path class="fill c' + (j + 1) + '" d="M' + x + ' ' + y0 + 'V' + (y + r) + 'Q' + x + ' ' + y + ' ' + (x + r) + ' ' + y + 'H' + (x + bw - r) + 'Q' + (x + bw) + ' ' + y + ' ' + (x + bw) + ' ' + (y + r) + 'V' + y0 + 'Z"/>' +
+          '<text class="val" x="' + (x + bw / 2) + '" y="' + (y - 5) + '" text-anchor="middle">' + esc(s.values[i]) + esc(v.suffix || '') + '</text>';
+      });
+    });
+    return out;
+  });
+}
+function pieCharts(v) {
+  var cats = v.pies[0].slices.map(function (s) { return s[0]; });
+  return legend(cats) + '<div class="pies">' + v.pies.map(function (p) {
+    var a = -Math.PI / 2, cx = 120, cy = 104, r = 74, total = p.slices.reduce(function (t, s) { return t + s[1]; }, 0), out = '';
+    p.slices.forEach(function (s) {
+      var da = 2 * Math.PI * s[1] / total, a2 = a + da, mid = a + da / 2, ci = cats.indexOf(s[0]) + 1;
+      out += '<path class="slice c' + ci + '" d="M' + cx + ' ' + cy + 'L' + (cx + r * Math.cos(a)) + ' ' + (cy + r * Math.sin(a)) + 'A' + r + ' ' + r + ' 0 ' + (da > Math.PI ? 1 : 0) + ' 1 ' + (cx + r * Math.cos(a2)) + ' ' + (cy + r * Math.sin(a2)) + 'Z"/>' +
+        '<text class="val" x="' + (cx + (r + 16) * Math.cos(mid)) + '" y="' + (cy + (r + 16) * Math.sin(mid) + 4) + '" text-anchor="middle">' + s[1] + '%</text>';
+      a = a2;
+    });
+    return '<div><b>' + esc(p.title) + '</b><svg class="plot" viewBox="0 0 240 208" role="img" aria-label="' + esc(p.title) + '">' + out + '</svg></div>';
+  }).join('') + '</div>';
+}
+function dataTable(v) {
+  return '<div class="tablewrap"><table class="data"><thead><tr>' + v.columns.map(function (c) { return '<th scope="col">' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+    v.rows.map(function (r) { return '<tr>' + r.map(function (c, i) { return i ? '<td class="num">' + esc(c) + '</td>' : '<th scope="row">' + esc(c) + '</th>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+}
+function processFlow(v) {
+  return '<ol class="flow">' + v.steps.map(function (s) {
+    if (typeof s === 'string') return '<li><span class="box">' + esc(s) + '</span></li>';
+    return '<li><span class="box">' + esc(s.text) + '</span><div class="fork">' + s.branch.map(function (b) { return '<div><small>↘ ' + esc(b[0]) + '</small><span class="box">' + esc(b[1]) + '</span></div>'; }).join('') + '</div></li>';
+  }).join('') + '</ol>';
+}
+function maps(v) {
+  return '<div class="maps">' + v.panels.map(function (p) {
+    return '<div class="map"><div class="head"><b>' + esc(p.title) + '</b><span class="muted">N ↑</span></div><div class="grid3">' +
+      p.grid.map(function (row) { return row.map(function (c) { return '<div>' + esc(c) + '</div>'; }).join(''); }).join('') + '</div></div>';
+  }).join('') + '</div>';
+}
+function figure(v) {
+  if (v.type === 'mixed') return v.parts.map(figure).join('');
+  var body = { line: lineChart, bar: barChart, pies: pieCharts, table: dataTable, process: processFlow, maps: maps }[v.type](v);
+  return '<figure class="chart">' + (v.caption ? '<figcaption>' + esc(v.caption) + '</figcaption>' : '') + (v.unit ? '<div class="unit">' + esc(v.unit) + '</div>' : '') + body +
+    (v.note ? '<p class="note">' + esc(v.note) + '</p>' : '') + '</figure>';
+}
+// The same figure as Markdown, so the tutor can check every number the answer quotes.
+function figureMd(v) {
+  var row = function (cells) { return '| ' + cells.join(' | ') + ' |'; };
+  var tbl = function (head, rows) { return [row(head), row(head.map(function () { return '---'; }))].concat(rows.map(row)).join('\n'); };
+  if (v.type === 'mixed') return v.parts.map(figureMd).join('\n\n');
+  var out = v.caption ? '*' + v.caption + '*\n' : '';
+  if (v.type === 'line') out += tbl([v.unit].concat(v.x), v.series.map(function (s) { return [s.name].concat(s.values); }));
+  if (v.type === 'bar') out += tbl([v.unit].concat(v.categories), v.series.map(function (s) { return [s.name].concat(s.values); }));
+  if (v.type === 'pies') out += tbl(['Share (%)'].concat(v.pies.map(function (p) { return p.title; })), v.pies[0].slices.map(function (s, i) { return [s[0]].concat(v.pies.map(function (p) { return p.slices[i][1]; })); }));
+  if (v.type === 'table') out += tbl(v.columns, v.rows);
+  if (v.type === 'process') out += v.steps.map(function (s, i) { return (i + 1) + '. ' + (typeof s === 'string' ? s : s.text + ' → ' + s.branch.map(function (b) { return b[0] + ': ' + b[1]; }).join('; ')); }).join('\n');
+  if (v.type === 'maps') out += v.panels.map(function (p) { return '**' + p.title + '** (north at the top)\n' + tbl(['West', 'Centre', 'East'], p.grid.map(function (r) { return r.map(function (c) { return c || '(open)'; }); })); }).join('\n\n');
+  return out + (v.note ? '\n\n' + v.note : '');
+}
+
+// ---------------------------------------------------------------- reading screens
+function passageHtml(p) {
+  return '<h2>' + esc(p.title) + '</h2>' + p.paragraphs.map(function (x) { return '<p class="para"><b class="plabel">' + esc(x.label) + '</b>' + esc(x.text) + '</p>'; }).join('');
+}
+function questionsHtml(p, ans) {
+  var n = 0, out = '';
+  p.groups.forEach(function (g) {
+    out += '<section class="qgroup"><h3>Questions ' + (n + 1) + '–' + (n + g.items.length) + '</h3><p class="instr">' + esc(g.instruction) + '</p>';
+    if (g.kind === 'gap') {
+      var base = n;
+      out += '<div class="gaptext">' + g.text.split('\n').map(function (line) {
+        return '<p>' + esc(line).replace(/\{(\d+)\}/g, function (_, k) {
+          var q = base + (+k);
+          return '<span class="gapwrap"><b class="qn">' + q + '</b><input class="gap" id="q-' + q + '" data-n="' + q + '" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" aria-label="Answer ' + q + '" value="' + esc(ans[q] || '') + '"></span>';
+        }) + '</p>';
+      }).join('') + '</div>';
+      n += g.items.length;
+    } else {
+      var shared = g.options;
+      if (shared && shared.some(function (o) { return o.text; }))
+        out += '<ul class="optlist">' + shared.map(function (o) { return '<li><b>' + esc(o.key) + '</b>' + esc(o.text || '') + '</li>'; }).join('') + '</ul>';
+      g.items.forEach(function (it) {
+        n++;
+        var cur = ans[n] || '';
+        if (it.options) out += '<fieldset class="q"><legend><b class="qn">' + n + '</b>' + esc(it.text) + '</legend>' + it.options.map(function (o) {
+          return '<label class="radio"><input type="radio" name="q-' + n + '" data-n="' + n + '" value="' + esc(o.key) + '"' + (cur === o.key ? ' checked' : '') + '><span><b>' + esc(o.key) + '</b>&nbsp; ' + esc(o.text) + '</span></label>'; }).join('') + '</fieldset>';
+        else if (shared.length <= 3) out += '<div class="q"><p><b class="qn">' + n + '</b>' + esc(it.text) + '</p><div class="seg" role="group" aria-label="Answer ' + n + '">' + shared.map(function (o) {
+          return '<button type="button" data-act="seg" data-n="' + n + '" data-val="' + esc(o.key) + '" aria-pressed="' + (cur === o.key) + '">' + esc(o.key) + '</button>'; }).join('') + '</div></div>';
+        else out += '<div class="q"><label for="q-' + n + '"><b class="qn">' + n + '</b>' + esc(it.text) + '</label><select id="q-' + n + '" data-n="' + n + '"><option value="">Choose</option>' + shared.map(function (o) {
+          return '<option value="' + esc(o.key) + '"' + (cur === o.key ? ' selected' : '') + '>' + esc(o.key) + '</option>'; }).join('') + '</select></div>';
+      });
+    }
+    out += '</section>';
+  });
+  return out;
+}
+function gapLine(g, k) {
+  var line = g.text.split('\n').filter(function (l) { return l.indexOf('{' + k + '}') > -1; })[0] || '';
+  return line.replace('{' + k + '}', '______').replace(/\{\d+\}/g, '(...)');
+}
+function correctText(q) {
+  if (q.group.kind === 'gap') return q.item.answers.join(' / ');
+  var o = (q.item.options || q.group.options).filter(function (x) { return x.key === q.item.answer; })[0];
+  return o.key + (o.text ? ' — ' + o.text : '');
+}
+function reviewHtml(p, a) {
+  var flat = flatten(p);
+  return markPassage(p, a.answers).map(function (r, i) {
+    var q = flat[i], stem = q.group.kind === 'gap' ? gapLine(q.group, q.ii + 1) : q.item.text;
+    return '<div class="rev"><p><b class="qn">' + r.n + '</b><span class="label">' + esc(r.qtype) + '</span></p><p>' + esc(stem) + '</p><dl class="pair">' +
+      '<dt>Your answer</dt><dd>' + (r.given ? esc(r.given) : '<i>blank</i>') + ' &nbsp;' + (r.right ? '<span class="tick">Right</span>' : '<span class="cross">Wrong</span>') + '</dd>' +
+      (r.right ? '' : '<dt>Correct</dt><dd>' + esc(correctText(q)) + '</dd>') + '<dt>Evidence</dt><dd>' + esc(r.evidence) + '</dd>' +
+      (r.right ? '' : '<dt><label for="cause-' + r.n + '">Why I missed it</label></dt><dd><select id="cause-' + r.n + '" data-cause="' + r.n + '"><option value="">Choose a cause</option>' +
+        CAUSES.map(function (c) { return '<option value="' + c[0] + '"' + (a.causes[r.n] === c[0] ? ' selected' : '') + '>' + c[0] + ' — ' + c[1] + '</option>'; }).join('') + '</select></dd>') +
+      '</dl></div>';
+  }).join('');
+}
+
+// ---------------------------------------------------------------- the attempt
+function limitFor(mode, item) { return mode === 'reading' ? 20 : item.task === 1 ? 20 : 40; }
+function start(mode, id, timed) {
+  var item = mode === 'writing' ? byId(WRITING, id) : byId(READING, id);
+  S = { mode: mode, id: id, startedAt: Date.now(), limitMin: timed ? limitFor(mode, item) : 0 };
+  if (mode === 'writing') { S.text = ''; S.pasted = 0; } else S.answers = {};
+  showing = null; render(); saveDraft();
+}
+function clockText() {
+  var gone = (Date.now() - S.startedAt) / 1000;
+  return S.limitMin ? S.limitMin * 60 - gone : -gone;   // positive = seconds left; negative = seconds elapsed on an untimed attempt
+}
+function tick() {
+  if (!S) return;
+  var left = clockText(), el = document.getElementById('clock');
+  if (S.limitMin && left <= 0) return finish(true);
+  if (el) { el.textContent = mmss(Math.abs(left)); el.className = 'clock' + (S.limitMin && left <= 60 ? ' out' : S.limitMin && left <= 300 ? ' low' : ''); }
+}
+function finish(timeUp) {
+  clearTimeout(saveTimer);
+  var now = Date.now(), end = S.limitMin ? Math.min(now, S.startedAt + S.limitMin * 60000) : now;
+  var item = S.mode === 'writing' ? byId(WRITING, S.id) : byId(READING, S.id);
+  var a = { type: S.mode, id: S.id, date: today(), limitMin: S.limitMin, usedSec: Math.round((end - S.startedAt) / 1000), timeUp: !!timeUp, item: JSON.parse(JSON.stringify(item)) };
+  if (S.mode === 'writing') { a.text = S.text; a.words = words(S.text); a.pasted = S.pasted; }
+  else { var res = markPassage(item, S.answers); a.answers = S.answers; a.score = res.filter(function (r) { return r.right; }).length; a.total = res.length; a.causes = {}; }
+  store.attempts.push(a); store.draft = null; save();
+  S = null; showing = store.attempts.length - 1; render();
+}
+function answered() { var c = 0; for (var k in S.answers) if (String(S.answers[k]).trim()) c++; return c; }
+
+function examHtml() {
+  var timedNote = S.limitMin ? S.limitMin + ' minutes' : 'No timer';
+  var bar = function (label, title, meter) {
+    return '<header class="bar"><div class="which"><span class="label">' + esc(label) + ' · ' + timedNote + '</span><b>' + esc(title) + '</b></div>' + meter +
+      '<div class="clock" id="clock" role="timer" aria-label="' + (S.limitMin ? 'Time left' : 'Time used') + '">' + mmss(Math.abs(clockText())) + '</div>' +
+      '<button class="go" id="finish" data-act="ask-finish">Finish</button>' +
+      '<span class="flag" id="nosave" hidden>This browser is not saving your work. Do not close or reload the page.</span>' +
+      '<div class="confirm" id="confirm" role="alert" hidden><span id="confirm-text"></span><button class="go small" id="yes-finish" data-act="finish">Yes, finish</button><button class="alt small" data-act="keep">Keep going</button></div>' +
+      '</header>';
+  };
+  if (S.mode === 'writing') {
+    var w = byId(WRITING, S.id), min = w.task === 1 ? 150 : 250;
+    return '<div class="exam">' + bar('Writing Task ' + w.task, 'Prompt ' + num(w.id) + ' · ' + w.kind, '<div class="meter"><b id="wc">' + words(S.text) + '</b> words · at least ' + min + '</div>') +
+      '<div class="panes"><section class="pane" aria-label="Task">' + promptHtml(w) + '</section>' +
+      '<section class="pane write"><textarea id="essay" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" aria-label="Your answer" placeholder="Type your answer here. There is no spell-check, as in the test.">' + esc(S.text) + '</textarea></section></div></div>';
+  }
+  var p = byId(READING, S.id);
+  return '<div class="exam">' + bar('Reading · level ' + p.level, p.title, '<div class="meter"><b id="done">' + answered() + '</b> of 13 answered</div>') +
+    '<div class="panes"><section class="pane" aria-label="Passage">' + passageHtml(p) + '</section><section class="pane" aria-label="Questions">' + questionsHtml(p, S.answers) + '</section></div></div>';
+}
+function promptHtml(w) {
+  var min = w.task === 1 ? 150 : 250;
+  return '<p class="muted">You should spend about ' + (w.task === 1 ? 20 : 40) + ' minutes on this task.</p><p class="task">' + esc(w.prompt) + '</p><p class="rubric">' + esc(w.rubric) + '</p><p><b>Write at least ' + min + ' words.</b></p>' +
+    (w.visual ? figure(w.visual) : '') + (w.note ? '<p class="note">' + esc(w.note) + '</p>' : '');
+}
+
+// ---------------------------------------------------------------- results and export
+function conditions(a) {
+  return (a.limitMin ? 'timed, ' + a.limitMin + ' minutes' : 'no timer') + (a.timeUp ? ' (time ran out)' : '');
+}
+function exportMd(a) {
+  if (a.type === 'writing') {
+    var w = itemOf(a), min = w.task === 1 ? 150 : 250;
+    return '**IELTS Practice · Writing Task ' + w.task + ' · Prompt ' + num(w.id) + ' (' + w.kind + ': ' + w.title + ')**\n' +
+      '- Date: ' + a.date + ' · Conditions: ' + conditions(a) + ' · Time used: ' + mmss(a.usedSec) + '\n' +
+      '- Words: ' + a.words + ' (minimum ' + min + (a.words >= min ? ' met' : ' NOT met') + ') · Typed in the app with no spell-check · Pasted text: ' + (a.pasted ? a.pasted + ' characters' : 'none') + '\n\n' +
+      '**Prompt**\n' + w.prompt + ' ' + w.rubric + ' Write at least ' + min + ' words.\n\n' + (w.visual ? '**Data shown**\n' + figureMd(w.visual) + '\n\n' : '') +
+      '**My answer (unchanged)**\n\n' + a.text;
+  }
+  var p = itemOf(a), res = markPassage(p, a.answers), flat = flatten(p), types = {};
+  res.forEach(function (r) { var t = types[r.qtype] = types[r.qtype] || [0, 0]; t[1]++; if (r.right) t[0]++; });
+  var wrong = res.filter(function (r) { return !r.right; });
+  return '**IELTS Practice · Reading · "' + p.title + '" (level ' + p.level + ', written by ' + p.author + ')**\n' +
+    '- Date: ' + a.date + ' · Conditions: ' + conditions(a) + ' · Time used: ' + mmss(a.usedSec) + '\n' +
+    '- Score: ' + res.filter(function (r) { return r.right; }).length + '/' + res.length + ' (tutor-written practice passage, so no band)\n' +
+    '- By question type: ' + Object.keys(types).map(function (t) { return t + ' ' + types[t][0] + '/' + types[t][1]; }).join('; ') + '\n' +
+    (wrong.length ? '- Wrong answers:\n' + wrong.map(function (r) {
+      return '  - Q' + r.n + ' (' + r.qtype + '): I answered ' + (r.given ? '"' + r.given + '"' : 'nothing') + '; correct is "' + correctText(flat[r.n - 1]) + '". Cause: ' + (a.causes[r.n] || 'not chosen');
+    }).join('\n') : '- Wrong answers: none');
+}
+function resultHtml(i) {
+  var a = store.attempts[i];
+  var copy = '<div class="stack"><div class="row"><button class="go" data-act="copy">Copy for the IELTS chat</button><button class="alt" data-act="leave">Done</button></div>' +
+    '<p class="muted" id="copied" role="status">' + (a.type === 'writing' ? 'Paste it into the IELTS chat. The tutor gives a band estimate for each of the four marking criteria.' : 'Choose a cause for each wrong answer first, then paste the result into the IELTS chat. The tutor writes the Log.') + '</p>' +
+    '<textarea class="copybox" id="copybox" readonly hidden aria-label="Result as text"></textarea></div>';
+  var warn = storageOk ? '' : '<p class="flag">This browser is not saving your work. Copy the result before you close the page.</p>';
+  if (a.type === 'writing') {
+    var w = itemOf(a), min = w.task === 1 ? 150 : 250;
+    return '<div class="sheet"><span class="label">Writing Task ' + w.task + ' · ' + a.date + '</span><h1>Prompt ' + num(w.id) + ': ' + esc(w.title) + '</h1>' +
+      '<div class="facts"><div><span class="label">Words</span><b>' + a.words + '</b>' + (a.words >= min ? '' : '<span class="flag">Under the minimum of ' + min + '</span>') + '</div>' +
+      '<div><span class="label">Time used</span><b>' + mmss(a.usedSec) + '</b><span class="muted">' + conditions(a) + '</span></div>' +
+      '<div><span class="label">Pasted text</span><b>' + (a.pasted ? a.pasted + ' chars' : 'none') + '</b></div></div>' + warn + copy +
+      (w.model ? '<p class="note">This prompt has a model answer in the course notes (Writing Task ' + w.task + ', Model answers). Read it now, after your own attempt.</p>' : '') + '</div>' +
+      '<div class="sheet"><span class="label">The task</span>' + promptHtml(w) + '</div>' +
+      '<div class="sheet"><span class="label">Your answer, unchanged</span><pre class="answer-text">' + esc(a.text || '(nothing written)') + '</pre></div>';
+  }
+  var p = itemOf(a), res = markPassage(p, a.answers), score = res.filter(function (r) { return r.right; }).length;
+  return '<div class="exam"><header class="bar"><div class="which"><span class="label">Reading result · ' + a.date + ' · ' + conditions(a) + '</span><b>' + esc(p.title) + '</b></div>' +
+    '<div class="meter">Time used <b>' + mmss(a.usedSec) + '</b></div><div class="big">' + score + '<span class="muted"> / ' + res.length + '</span></div></header>' +
+    '<div class="panes"><section class="pane" aria-label="Passage">' + passageHtml(p) + '</section><section class="pane" aria-label="Review">' + warn + copy +
+    '<p class="note">Written by ' + esc(p.author) + ' as practice. It is not an official test, so the score is not a band.</p>' + reviewHtml(p, a) + '</section></div></div>';
+}
+
+// ---------------------------------------------------------------- choosing work
+function navHtml(cur) {
+  return '<nav aria-label="Sections">' + [['home', 'Home'], ['writing', 'Writing'], ['reading', 'Reading'], ['history', 'History']].map(function (x) {
+    return '<a href="#' + x[0] + '"' + (cur === x[0] ? ' aria-current="page"' : '') + '>' + x[1] + '</a>'; }).join('') + '</nav>';
+}
+function attemptLine(a, i) {
+  var title, detail, it = itemOf(a);
+  if (!it) return '<div class="item"><div class="what"><b>' + esc(a.id) + '</b><span class="muted">' + esc(a.date) + ' · this item is no longer in the app, so the attempt cannot be opened</span></div></div>';
+  if (a.type === 'writing') { title = 'Writing Task ' + it.task + ' · Prompt ' + num(it.id) + ': ' + it.title; detail = a.words + ' words in ' + mmss(a.usedSec); }
+  else { title = 'Reading · ' + it.title; detail = a.score + '/' + a.total + ' in ' + mmss(a.usedSec); }
+  return '<div class="item"><div class="what"><b>' + esc(title) + '</b><span class="muted">' + esc(a.date) + ' · ' + esc(detail) + ' · ' + conditions(a) + '</span></div><button class="alt small" data-act="open" data-i="' + i + '">Open</button></div>';
+}
+function homeHtml() {
+  var days = Math.ceil((TEST_DAY - new Date(new Date().toDateString())) / 864e5);
+  var wDone = WRITING.filter(function (w) { return lastAttempt('writing', w.id); }).length, rDone = READING.filter(function (p) { return lastAttempt('reading', p.id); }).length;
+  var recent = store.attempts.map(attemptLine).reverse().slice(0, 3).join('');
+  return '<div class="spread"><h1>IELTS Practice</h1><div class="days">' + (days > 0 ? '<b>' + days + '</b>days to the test on 10 January' : days === 0 ? '<b>Today</b>is test day' : 'The test date has passed') + '</div></div>' + navHtml('home') +
+    (storageOk ? '' : '<p class="flag">This browser is not saving your work. Attempts last only until you close the page.</p>') +
+    '<div class="doors"><a class="door" href="#writing"><span class="label">Typed, no spell-check</span><b>Writing</b><small>' + WRITING.filter(function (w) { return w.task === 1; }).length + ' Task 1 prompts with real charts and ' + WRITING.filter(function (w) { return w.task === 2; }).length + ' Task 2 essay prompts. Countdown and live word count. ' + wDone + ' attempted.</small></a>' +
+    '<a class="door" href="#reading"><span class="label">Passage left, questions right</span><b>Reading</b><small>' + READING.length + ' passages of 13 questions, marked on the spot with the evidence for every answer. ' + rDone + ' attempted.</small></a></div>' +
+    (recent ? '<div class="sheet"><span class="label">Latest attempts</span><div>' + recent + '</div></div>' : '') +
+    '<p class="muted">The prompts and passages were written by Claude and Codex for practice. They are not official IELTS material. Reading shows a raw score and never a band; your band comes from official tests. Results are copied into the IELTS chat, where the tutor marks Writing and keeps the Log.</p>';
+}
+function tagsHtml(x, last) {
+  return '<div class="tags"><span class="tag">' + esc(x.kind || 'Level ' + x.level) + '</span>' + (x.drill ? '<span class="tag">' + esc(x.drill) + '</span>' : '') +
+    (x.reserved ? '<span class="tag hold">' + esc(x.reserved) + '</span>' : '') + (last ? '<span class="tag done">Done ' + last.date + '</span>' : '') + '</div>';
+}
+function startButtons(mode, id, min) {
+  return '<div class="row"><button class="go small" data-act="start" data-mode="' + mode + '" data-id="' + id + '" data-timed="1">Start · ' + min + ' min</button><button class="alt small" data-act="start" data-mode="' + mode + '" data-id="' + id + '" data-timed="">No timer</button></div>';
+}
+function writingHtml() {
+  var block = function (task) {
+    return '<div class="sheet"><div><h2>Task ' + task + '</h2><p class="muted">' + (task === 1 ? 'Describe a chart, table, process or map. 20 minutes, at least 150 words.' : 'Write an essay. 40 minutes, at least 250 words. Task 2 counts for more than Task 1.') + '</p></div><div>' +
+      WRITING.filter(function (w) { return w.task === task; }).map(function (w) {
+        var last = lastAttempt('writing', w.id);
+        return '<div class="item"><div class="what"><b>Prompt ' + num(w.id) + (last ? ': ' + esc(w.title) : '') + '</b>' + tagsHtml(w, last) + '</div>' + startButtons('writing', w.id, task === 1 ? 20 : 40) + '</div>';
+      }).join('') + '</div></div>';
+  };
+  return '<h1>Writing</h1>' + navHtml('writing') + '<p class="muted">The question stays hidden until you start, so every prompt is unseen. Do the prompt your tutor names for the drill. Starting the timer is final: there is no pause.</p>' + block(1) + block(2);
+}
+function readingHtml() {
+  var list = READING.slice().sort(function (a, b) { return a.level - b.level || a.title.localeCompare(b.title); });
+  return '<h1>Reading</h1>' + navHtml('reading') + '<p class="muted">One passage and 13 questions, as in one part of the test. Level 1 is like Passage 1 (easiest), level 3 like Passage 3. Starting the timer is final: there is no pause.</p>' +
+    '<div class="sheet"><div>' + (list.length ? list.map(function (p) {
+      var last = lastAttempt('reading', p.id);
+      return '<div class="item"><div class="what"><b>' + esc(p.title) + '</b><div class="tags"><span class="tag">Level ' + p.level + '</span><span class="tag">Written by ' + esc(p.author) + '</span>' +
+        (last ? '<span class="tag done">' + last.score + '/' + last.total + ' on ' + last.date + '</span>' : '') + '</div></div>' + startButtons('reading', p.id, 20) + '</div>';
+    }).join('') : '<p class="muted">No passages are loaded.</p>') + '</div></div>';
+}
+function historyHtml() {
+  var lines = store.attempts.map(attemptLine).reverse().join('');
+  return '<h1>History</h1>' + navHtml('history') + '<div class="sheet">' + (lines ? '<div>' + lines + '</div>' : '<p class="muted">Nothing yet. Finished attempts are listed here, on this device only.</p>') + '</div>' +
+    (lines ? '<div class="row" id="clearrow"><button class="alt small" data-act="ask-clear">Delete all history</button></div>' : '');
+}
+
+function render() {
+  var route = (location.hash || '#home').slice(1), html;
+  if (S) html = examHtml();
+  else if (showing != null && store.attempts[showing] && itemOf(store.attempts[showing])) html = resultHtml(showing);
+  else html = route === 'writing' ? writingHtml() : route === 'reading' ? readingHtml() : route === 'history' ? historyHtml() : homeHtml();
+  app.innerHTML = html;
+  if (!S) window.scrollTo(0, 0);
+}
+
+// ---------------------------------------------------------------- events
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-act]'); if (!b) return;
+  var act = b.dataset.act;
+  if (act === 'start') start(b.dataset.mode, b.dataset.id, !!b.dataset.timed);
+  else if (act === 'ask-finish') {   // shown in place: a re-render here would throw away the caret and the scroll position
+    document.getElementById('confirm-text').textContent = (S.limitMin ? 'Finish now with ' + mmss(clockText()) + ' left? ' : 'Finish and save this attempt? ') + 'You cannot reopen it.';
+    document.getElementById('confirm').hidden = false; document.getElementById('yes-finish').focus();
+  }
+  else if (act === 'keep') { document.getElementById('confirm').hidden = true; document.getElementById('finish').focus(); }
+  else if (act === 'finish') { keepText(); finish(false); }
+  else if (act === 'seg') {
+    S.answers[b.dataset.n] = S.answers[b.dataset.n] === b.dataset.val ? '' : b.dataset.val;
+    [].forEach.call(b.parentNode.children, function (x) { x.setAttribute('aria-pressed', String(S.answers[b.dataset.n] === x.dataset.val)); });
+    afterAnswer();
+  }
+  else if (act === 'open') { showing = +b.dataset.i; render(); }
+  else if (act === 'leave') { showing = null; render(); }
+  else if (act === 'copy') copyResult(b);
+  else if (act === 'ask-clear') document.getElementById('clearrow').innerHTML = '<span>Delete every saved attempt on this device?</span><button class="go small" data-act="clear">Yes, delete</button><button class="alt small" data-act="leave">Keep them</button>';
+  else if (act === 'clear') { store.attempts = []; save(); render(); }
+});
+function keepText() { var t = document.getElementById('essay'); if (t && S && S.mode === 'writing') S.text = t.value; }
+function afterAnswer() { var d = document.getElementById('done'); if (d) d.textContent = answered(); persistSoon(); }
+document.addEventListener('input', function (e) {
+  if (!S) return;
+  if (e.target.id === 'essay') { S.text = e.target.value; document.getElementById('wc').textContent = words(S.text); persistSoon(); }
+  else if (e.target.dataset.n) { S.answers[e.target.dataset.n] = e.target.value; afterAnswer(); }
+});
+document.addEventListener('change', function (e) {
+  if (S && e.target.dataset.n) { S.answers[e.target.dataset.n] = e.target.value; afterAnswer(); }
+  else if (e.target.dataset.cause && showing != null) { store.attempts[showing].causes[e.target.dataset.cause] = e.target.value; save(); }
+});
+document.addEventListener('paste', function (e) {
+  if (S && e.target.id === 'essay') S.pasted += ((e.clipboardData && e.clipboardData.getData('text')) || '').length;
+});
+function copyResult(btn) {
+  var text = exportMd(store.attempts[showing]), note = document.getElementById('copied'), box = document.getElementById('copybox');
+  var fallback = function () { box.hidden = false; box.value = text; box.focus(); box.select(); note.textContent = 'Copying is blocked here. The result is selected below: copy it yourself.'; };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { note.textContent = 'Copied. Paste it into the IELTS chat.'; btn.textContent = 'Copied'; }, fallback);
+  else fallback();
+}
+window.addEventListener('hashchange', function () { if (!S) { showing = null; render(); } });
+function saveNow() { if (S) { keepText(); clearTimeout(saveTimer); saveDraft(); } }
+window.addEventListener('pagehide', saveNow);
+document.addEventListener('visibilitychange', function () { if (document.hidden) saveNow(); });   // phones often skip pagehide
+setInterval(tick, 500);
+render();
+})();
+</script>
